@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TorchFlicker : MonoBehaviour
@@ -26,7 +25,7 @@ public class TorchFlicker : MonoBehaviour
     {
         while (flicker)
         {
-            noise = Random.RandomRange(0f, 1f);
+            noise = Random.Range(0f, 1f);
             _light.intensity = Mathf.Lerp(minValue, maxValue, noise);
             yield return new WaitForSeconds(timeRate);
         }
