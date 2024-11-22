@@ -55,15 +55,24 @@ public partial struct SelectedVisualJob : IJobEntity
     
     public void Execute(ref Selected selected)
     {
-
-        if (selected.onDeselected || selected.onSelected)
+        VisualChange change = new VisualChange
         {
-            VisualChange change = new VisualChange
-            {
-                Entity = selected.visualEntity,
-                Scale = selected.onDeselected ? 0f : selected.showScale
-            };
+            Entity = Entity.Null
+        };
+        if (selected.onDeselected)
+        {
+            change.Entity = selected.visualEntity;
+            change.Scale = 0f;
+        }
+        
+        if (selected.onSelected)
+        {
+            change.Entity = selected.visualEntity;
+            change.Scale = selected.showScale;
+        }
 
+        if (change.Entity != Entity.Null)
+        {
             VisualChanges.Enqueue(change);
         }
     }
