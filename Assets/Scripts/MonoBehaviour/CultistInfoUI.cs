@@ -11,6 +11,7 @@ public class CultistInfoUI : MonoBehaviour
     private void Start()
     {
         SelectionManager.Instance.OnSelectedEntitiesChanged += SelectionManager_OnSelectedEntitiesChanged;
+        gameObject.SetActive(false);
     }
 
     private void OnDestroy()
@@ -35,8 +36,10 @@ public class CultistInfoUI : MonoBehaviour
             }
         }
 
+        gameObject.SetActive(false);
         if (nameArray.Length <= 0) return;
-        
+        gameObject.SetActive(true);
+
         for (int i = 0; i < nameArray.Length; i++)
         {
             Transform spawnedCultistPanel = Instantiate(transform.GetChild(0), transform);
