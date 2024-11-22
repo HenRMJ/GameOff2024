@@ -59,6 +59,7 @@ public partial struct SelectedVisualJob : IJobEntity
         {
             Entity = Entity.Null
         };
+        
         if (selected.onDeselected)
         {
             change.Entity = selected.visualEntity;

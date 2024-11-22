@@ -1,5 +1,7 @@
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -20,20 +22,28 @@ public class CameraMover : MonoBehaviour
     [SerializeField] private float fieldOfViewMax;
     [SerializeField] private float zoomAmount;
     [SerializeField] private float zoomSpeed;
-    
+
     private PlayerInput _input;
-    private Transform _cameraTransform;
     private CinemachineFollow _vCamFollow;
+    
+    private Transform _cameraTransform;
+    private Coroutine _smoothHeightChange;
+
+    private float _originalCameraHeight;
+    private float _originalFieldOfView;
     private float _targetFieldOfView;
     private float _realMoveSpeed;
     private float _realRotationSpeed;
 
+    
     private void Start()
     {
         _input = PlayerInput.Instance;
         _cameraTransform = Camera.main.transform;
         _targetFieldOfView = _vCam.Lens.FieldOfView;
         _vCamFollow = _vCam.GetComponent<CinemachineFollow>();
+        _originalFieldOfView = _targetFieldOfView;
+        _originalCameraHeight = _vCamFollow.FollowOffset.y;
     }
 
     private void Update()
@@ -90,8 +100,30 @@ public class CameraMover : MonoBehaviour
             _targetFieldOfView += zoomAmount;
         }
 
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _targetFieldOfView = _originalFieldOfView;
+                if (_smoothHeightChange != null)
+                {
+                    StopCoroutine(_smoothHeightChange);
+                }
+                _smoothHeightChange = StartCoroutine(SmoothHeightChange(_realMoveSpeed, _originalCameraHeight));
+            }
+        }
+        
         _targetFieldOfView = Mathf.Clamp(_targetFieldOfView, fieldOfViewMin, fieldOfViewMax);
-
         _vCam.Lens.FieldOfView = Mathf.Lerp(_vCam.Lens.FieldOfView, _targetFieldOfView, zoomSpeed * Time.deltaTime);
+    }
+
+    private IEnumerator SmoothHeightChange(float realSpeed, float targetHeight)
+    {
+        while (!Mathf.Approximately(_vCamFollow.FollowOffset.y, targetHeight))
+        {
+            _vCamFollow.FollowOffset.y =
+                Mathf.Lerp(_vCamFollow.FollowOffset.y, targetHeight, realSpeed * Time.deltaTime);
+            yield return null;
+        }
     }
 }
