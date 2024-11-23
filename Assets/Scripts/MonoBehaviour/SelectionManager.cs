@@ -1,8 +1,12 @@
 using System;
+using System.Xml;
 using Unity.Collections;
 using Unity.Entities;
+using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
+using Ray = UnityEngine.Ray;
+using RaycastHit = Unity.Physics.RaycastHit;
 
 public class SelectionManager : MonoBehaviour
 {
@@ -43,12 +47,15 @@ public class SelectionManager : MonoBehaviour
             NativeArray<Entity> entityArray = entityQuery.ToEntityArray(Allocator.Temp);
             NativeArray<Selected> selectedArray = entityQuery.ToComponentDataArray<Selected>(Allocator.Temp);
 
-            for (int i = 0; i < entityArray.Length; i++)
+            if (!Input.GetKey(KeyCode.LeftShift))
             {
-                entityManager.SetComponentEnabled<Selected>(entityArray[i], false);
-                Selected selected = selectedArray[i];
-                selected.onDeselected = true;
-                entityManager.SetComponentData(entityArray[i], selected);
+                for (int i = 0; i < entityArray.Length; i++)
+                {
+                    entityManager.SetComponentEnabled<Selected>(entityArray[i], false);
+                    Selected selected = selectedArray[i];
+                    selected.onDeselected = true;
+                    entityManager.SetComponentData(entityArray[i], selected);
+                }
             }
 
             Rect selectionAreaRect = GetSelectionAreaRect();
@@ -80,9 +87,72 @@ public class SelectionManager : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                entityQuery = entityManager.CreateEntityQuery(typeof(PhysicsWorldSingleton));
+                PhysicsWorldSingleton physicsWorldSingleton = entityQuery.GetSingleton<PhysicsWorldSingleton>();
+                CollisionWorld collisionWorld = physicsWorldSingleton.CollisionWorld;
+
+                Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                RaycastInput raycastInput = new RaycastInput
+                {
+                    Start = cameraRay.GetPoint(0f),
+                    End = cameraRay.GetPoint(999f),
+                    Filter = new CollisionFilter
+                    {
+                        BelongsTo = ~0u,
+                        CollidesWith = 1u << 6,
+                        GroupIndex = 0
+                    }
+                };
+
+                if (collisionWorld.CastRay(raycastInput, out RaycastHit raycastHit))
+                {
+                    if (entityManager.HasComponent<Selected>(raycastHit.Entity))
+                    {
+                        entityManager.SetComponentEnabled<Selected>(raycastHit.Entity, true);
+                        Selected selected = entityManager.GetComponentData<Selected>(raycastHit.Entity);
+                        selected.onSelected = true;
+                        entityManager.SetComponentData(raycastHit.Entity, selected);
+                    }
+                }
+            }
             
             OnSelectionAreaEnd?.Invoke(this, EventArgs.Empty);
             OnSelectedEntitiesChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        if (Input.GetMouseButton(1))
+        {
+            Vector3 mouseWorldPosition = MouseWorldPosition.Instance.GetPosition();
+
+            EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+
+            EntityQuery entityQuery = entityManager.CreateEntityQuery(typeof(PhysicsWorldSingleton));
+            PhysicsWorldSingleton physicsWorldSingleton = entityQuery.GetSingleton<PhysicsWorldSingleton>();
+            CollisionWorld collisionWorld = physicsWorldSingleton.CollisionWorld;
+            
+            Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastInput raycastInput = new RaycastInput
+            {
+                Start = cameraRay.GetPoint(0f),
+                End = cameraRay.GetPoint(999f),
+                Filter = new CollisionFilter
+                {
+                    BelongsTo = ~0u,
+                    CollidesWith = 1u << 7,
+                    GroupIndex = 0
+                }
+            };
+
+            bool selectedBuilding = false;
+
+            if (collisionWorld.CastRay(raycastInput, out RaycastHit raycastHit))
+            {
+                
+            }
         }
     }
 

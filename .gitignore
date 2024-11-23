@@ -74,3 +74,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 /Packages/com.rukhanka.animation
 /Assets/Plugins/Sirenix
+/Packages/com.projectdawn.navigation.crowds
+/Packages/com.projectdawn.navigation

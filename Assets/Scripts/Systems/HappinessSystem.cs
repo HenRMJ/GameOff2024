@@ -22,7 +22,6 @@ public partial struct CheckHungerJob : IJobEntity
         happiness.timer += DeltaTime;
         if (happiness.timer <= happiness.maxTimer) return;
         happiness.timer = 0f;
-
         happiness.happiness += nourishmentReceiver.Satiated ? 1f : -1f;
             
         nourishmentReceiver.Satiated = false;
