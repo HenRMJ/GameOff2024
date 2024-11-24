@@ -6,10 +6,16 @@ using UnityEngine;
 
 partial struct FeedingSystem : ISystem
 {
+    private NativeList<int> totalMeatConsumed;
+    private NativeList<int> totalWaterConsumed;
+    private NativeList<int> totalVegetablesConsumed;
     [BurstCompile]
     public void OnCreate(ref SystemState state)
     {
         state.RequireForUpdate<Kitchen>();
+        totalMeatConsumed = new NativeList<int>(Allocator.Persistent);
+        totalWaterConsumed = new NativeList<int>(Allocator.Persistent);
+        totalVegetablesConsumed = new NativeList<int>(Allocator.Persistent);
     }
 
     [BurstCompile]
@@ -17,9 +23,20 @@ partial struct FeedingSystem : ISystem
     {
         Entity kitchenEntity = SystemAPI.GetSingletonEntity<Kitchen>();
 
-        NativeList<int> totalMeatConsumed = new NativeList<int>(Allocator.TempJob);
-        NativeList<int> totalWaterConsumed = new NativeList<int>(Allocator.TempJob);
-        NativeList<int> totalVegetablesConsumed = new NativeList<int>(Allocator.TempJob);
+        // This should be moved to where the entites are spawned later
+        int numberOfMovers = 0;
+        foreach (RefRO<SetTarget> target in SystemAPI.Query<RefRO<SetTarget>>())
+        {
+            numberOfMovers++;
+        }
+
+        totalMeatConsumed.Capacity = numberOfMovers + 10;
+        totalWaterConsumed.Capacity = numberOfMovers + 10;
+        totalVegetablesConsumed.Capacity = numberOfMovers + 10;
+        
+        totalMeatConsumed.Clear(); 
+        totalWaterConsumed.Clear();
+        totalVegetablesConsumed.Clear();
 
         GatherRequirements gatherRequirements = new GatherRequirements
         {
@@ -56,13 +73,18 @@ partial struct FeedingSystem : ISystem
             kitchen.Vegetables -= totalVegetables;
         }
 
-        new SatiateJob
+        JobHandle satiateHandled = new SatiateJob
         {
             RequirementsMet = requirementsMet
-        }.ScheduleParallel();
-        
+        }.ScheduleParallel(state.Dependency);
+        satiateHandled.Complete();
+
         SystemAPI.SetSingleton(kitchen);
-        
+    }
+
+    [BurstCompile]
+    public void OnDestroy(ref SystemState state)
+    {
         totalVegetablesConsumed.Dispose();
         totalMeatConsumed.Dispose();
         totalWaterConsumed.Dispose();

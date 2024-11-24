@@ -510,7 +510,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 65.485535
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -536,8 +536,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.41656953, y: 0.00000005271848, z: -0.000000024156662, w: 0.9091039}
-  m_LocalPosition: {x: 0, y: 30, z: -25}
+  m_LocalRotation: {x: 0.38139638, y: 0.000000016283023, z: -0.0000000067180963, w: 0.9244116}
+  m_LocalPosition: {x: 0.86, y: 19.43, z: -21.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1190,7 +1190,7 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.5, y: 0.5}
+  Damping: {x: 0, y: 0}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -1210,11 +1210,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TrackerSettings:
     BindingMode: 1
-    PositionDamping: {x: 0.2, y: 0.2, z: 0.2}
+    PositionDamping: {x: 0, y: 0, z: 0}
     AngularDampingMode: 0
-    RotationDamping: {x: 0.2, y: 0.2, z: 0.2}
+    RotationDamping: {x: 0, y: 0, z: 0}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 29, z: -25}
+  FollowOffset: {x: 0, y: 17.9, z: -18}
 --- !u!114 &1314646679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1239,7 +1239,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 65.485535
+    FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -1266,8 +1266,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314646676}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.41656953, y: 0.000000041684856, z: -7.7341876e-11, w: 0.9091039}
-  m_LocalPosition: {x: 0, y: 30, z: -25}
+  m_LocalRotation: {x: 0.38139635, y: 0.000000016283023, z: -0.0000000067180945, w: 0.92441165}
+  m_LocalPosition: {x: 0.86, y: 19.43, z: -21.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1423,6 +1423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1737607908}
   - component: {fileID: 1737607907}
+  - component: {fileID: 1737607909}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1457,6 +1458,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1737607909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737607906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2573637d14a0c34488e43cbfb7c74236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cullingCameras:
+  - {fileID: 330585545}
+  shadowCastingLights:
+  - {fileID: 410087040}
+  addEditorSceneCamera: 1
+  urpAsset: {fileID: 0}
+  drawCullingVolumes: 0
+  cullingVolumeColor: {r: 0, g: 0, b: 1, a: 1}
+  drawSceneBoundingBoxes: 0
+  visibleChunkColor: {r: 0, g: 1, b: 0, a: 1}
+  invisibleChunkColor: {r: 1, g: 0, b: 0, a: 1}
+  visibleRendererColor: {r: 1, g: 1, b: 1, a: 1}
+  invisibleRendererColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1951665427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,9 +1651,12 @@ MonoBehaviour:
   _fastMoveSpeed: 20
   _rotationSpeed: 30
   _fastRotationSpeed: 80
-  _cameraHeightMin: 1
+  _cameraHeightMin: 0
   _cameraHeightMax: 70
-  fieldOfViewMin: 5
+  _dollyDuration: 0.16
+  _dollyInMax: -1
+  _dollyOutMax: -60
+  fieldOfViewMin: 1
   fieldOfViewMax: 90
   zoomAmount: 3
   zoomSpeed: 5
@@ -1640,7 +1669,7 @@ Transform:
   m_GameObject: {fileID: 2060250982}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0.86, y: 1.53, z: -3.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

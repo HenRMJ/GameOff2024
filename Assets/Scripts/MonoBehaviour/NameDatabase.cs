@@ -16,6 +16,18 @@ public static class NameDatabase
         }
     }
 
+    public static string[] GetFirstNames()
+    {
+        LoadDatabase();
+        return _nameDatabase.FirstNames;
+    }
+    
+    public static string[] GetLastNames()
+    {
+        LoadDatabase();
+        return _nameDatabase.LastNames;
+    }
+    
     public static string GetRandonFirstName()
     {
         LoadDatabase();

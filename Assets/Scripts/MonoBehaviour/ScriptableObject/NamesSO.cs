@@ -1,5 +1,6 @@
 using System.Linq;
 using Sirenix.OdinInspector;
+using Unity.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NameDatabase", menuName = "Name Database")]

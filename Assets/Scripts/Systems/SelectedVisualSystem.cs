@@ -3,7 +3,6 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Transforms;
-using UnityEngine.SocialPlatforms;
 
 [UpdateInGroup(typeof(LateSimulationSystemGroup)), UpdateBefore(typeof(ResetEventsSystem))]
 partial struct SelectedVisualSystem : ISystem
@@ -40,7 +39,7 @@ partial struct SelectedVisualSystem : ISystem
         
         localTransformLookup.Update(ref state);
     }
-
+    
     [BurstCompile]
     public void OnDestroy(ref SystemState state)
     {
@@ -71,7 +70,7 @@ public partial struct SelectedVisualJob : IJobEntity
             change.Entity = selected.visualEntity;
             change.Scale = selected.showScale;
         }
-
+        
         if (change.Entity != Entity.Null)
         {
             VisualChanges.Enqueue(change);

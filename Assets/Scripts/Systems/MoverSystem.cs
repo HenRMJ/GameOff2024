@@ -1,29 +1,33 @@
+using ProjectDawn.Navigation;
 using Rukhanka;
 using Unity.Burst;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
-using Unity.Physics;
 using Unity.Transforms;
+using AnimatorParametersAspect = Rukhanka.AnimatorParametersAspect;
 
 partial struct MoverSystem : ISystem
 {
-    public const float REACH_TARGET_SQ = 1f;
-
-    private FastAnimatorParameter speedParam;
-
+    private ComponentLookup<LocalTransform> _localTransformLookup;
+    private FastAnimatorParameter _speedParam;
+    
     [BurstCompile]
     public void OnCreate(ref SystemState state)
     {
-        speedParam = new FastAnimatorParameter("speed");
+        _speedParam = new FastAnimatorParameter("speed");
+        _localTransformLookup = state.GetComponentLookup<LocalTransform>(true);
     }
     
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
+        _localTransformLookup.Update(ref state);
+        
         MoverJob moverJob = new MoverJob
         {
-            DeltaTime = SystemAPI.Time.DeltaTime,
-            SpeedParam = speedParam
+            SpeedParam = _speedParam,
+            LocalTransformLookup = _localTransformLookup
         };
         moverJob.ScheduleParallel();
     }
@@ -32,36 +36,22 @@ partial struct MoverSystem : ISystem
 [BurstCompile]
 public partial struct MoverJob : IJobEntity
 {
-    public float DeltaTime;
+    [ReadOnly] public ComponentLookup<LocalTransform> LocalTransformLookup;
     public FastAnimatorParameter SpeedParam;
-    public void Execute(ref LocalTransform localTransform, ref Mover mover, ref PhysicsVelocity velocity, AnimatorParametersAspect animator)
+    
+    public void Execute(AnimatorParametersAspect animator, ref SetTarget target, ref AgentBody body, in TargetOverride targetOverride)
     {
-        float3 moveDirection = mover.TargetPosition - localTransform.Position;
+        animator.SetParameterValue(SpeedParam, body.Speed);
 
-        float reachedTargetSq = MoverSystem.REACH_TARGET_SQ;
-
-        if (math.lengthsq(moveDirection) <= reachedTargetSq)
+        if (targetOverride.TargetEntity != Entity.Null)
         {
-            velocity.Linear = float3.zero;
-            velocity.Angular = float3.zero;
-            mover.IsMoving = false;
-            animator.SetParameterValue(SpeedParam, 0f);
-            return;
+            target.TargetPosition = LocalTransformLookup[targetOverride.TargetEntity].Position;
         }
-
-        mover.IsMoving = true;
         
-        moveDirection = math.normalize(moveDirection);
-
-        localTransform.Rotation = math.slerp(localTransform.Rotation, 
-            quaternion.LookRotation(moveDirection, math.up()),
-            DeltaTime * mover.RotationalSpeed);
-
-        animator.SetParameterValue(SpeedParam, 1f);
-        
-        velocity.Linear = moveDirection * mover.MoveSpeed;
-        velocity.Angular = float3.zero;
-        
+        if (!math.all(target.TargetPosition == body.Destination))
+        {
+            body.SetDestination(target.TargetPosition);
+        }
         
     }
 }

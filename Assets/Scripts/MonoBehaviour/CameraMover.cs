@@ -16,6 +16,9 @@ public class CameraMover : MonoBehaviour
     [SerializeField] private float _fastRotationSpeed;
     [SerializeField] private float _cameraHeightMin;
     [SerializeField] private float _cameraHeightMax;
+    [SerializeField] private float _dollyDuration;
+    [SerializeField] private float _dollyInMax;
+    [SerializeField] private float _dollyOutMax;
 
     [Header("Zoom Settings")] 
     [SerializeField] private float fieldOfViewMin;
@@ -28,8 +31,10 @@ public class CameraMover : MonoBehaviour
     
     private Transform _cameraTransform;
     private Coroutine _smoothHeightChange;
+    private Coroutine _smoothDolly;
 
     private float _originalCameraHeight;
+    private float _originalCameraDistance;
     private float _originalFieldOfView;
     private float _targetFieldOfView;
     private float _realMoveSpeed;
@@ -44,6 +49,7 @@ public class CameraMover : MonoBehaviour
         _vCamFollow = _vCam.GetComponent<CinemachineFollow>();
         _originalFieldOfView = _targetFieldOfView;
         _originalCameraHeight = _vCamFollow.FollowOffset.y;
+        _originalCameraDistance = _vCamFollow.FollowOffset.z;
     }
 
     private void Update()
@@ -90,16 +96,7 @@ public class CameraMover : MonoBehaviour
         }
 
         transform.eulerAngles += new Vector3(0f, rotationAmount * _realRotationSpeed * Time.deltaTime, 0f);
-        if (Input.mouseScrollDelta.y > 0)
-        {
-            _targetFieldOfView -= zoomAmount;
-        }
-
-        if (Input.mouseScrollDelta.y < 0)
-        {
-            _targetFieldOfView += zoomAmount;
-        }
-
+        
         if (Input.GetKey(KeyCode.LeftControl))
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -109,7 +106,39 @@ public class CameraMover : MonoBehaviour
                 {
                     StopCoroutine(_smoothHeightChange);
                 }
-                _smoothHeightChange = StartCoroutine(SmoothHeightChange(_realMoveSpeed, _originalCameraHeight));
+                _smoothHeightChange = StartCoroutine(SmoothHeightChange(_realMoveSpeed));
+            }
+            
+            if (Input.mouseScrollDelta.y > 0)
+            {
+                if (_smoothDolly != null)
+                {
+                    StopCoroutine(_smoothDolly);
+                }
+
+                _smoothDolly = StartCoroutine(SmoothDolly(_dollyDuration, _realMoveSpeed));
+            }
+
+            if (Input.mouseScrollDelta.y < 0)
+            {
+                if (_smoothDolly != null)
+                {
+                    StopCoroutine(_smoothDolly);
+                }
+
+                _smoothDolly = StartCoroutine(SmoothDolly(_dollyDuration, -_realMoveSpeed));
+            }
+        }
+        else
+        {
+            if (Input.mouseScrollDelta.y > 0)
+            {
+                _targetFieldOfView -= zoomAmount;
+            }
+
+            if (Input.mouseScrollDelta.y < 0)
+            {
+                _targetFieldOfView += zoomAmount;
             }
         }
         
@@ -117,13 +146,30 @@ public class CameraMover : MonoBehaviour
         _vCam.Lens.FieldOfView = Mathf.Lerp(_vCam.Lens.FieldOfView, _targetFieldOfView, zoomSpeed * Time.deltaTime);
     }
 
-    private IEnumerator SmoothHeightChange(float realSpeed, float targetHeight)
+    private IEnumerator SmoothHeightChange(float realSpeed)
     {
-        while (!Mathf.Approximately(_vCamFollow.FollowOffset.y, targetHeight))
+        while (!Mathf.Approximately(_vCamFollow.FollowOffset.y, _originalCameraHeight) || !Mathf.Approximately(_vCamFollow.FollowOffset.z, _originalCameraDistance))
         {
             _vCamFollow.FollowOffset.y =
-                Mathf.Lerp(_vCamFollow.FollowOffset.y, targetHeight, realSpeed * Time.deltaTime);
+                Mathf.Lerp(_vCamFollow.FollowOffset.y, _originalCameraHeight, realSpeed * Time.deltaTime);
+            
+            _vCamFollow.FollowOffset.z =
+                Mathf.Lerp(_vCamFollow.FollowOffset.z, _originalCameraDistance, realSpeed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    private IEnumerator SmoothDolly(float duration, float speed)
+    {
+        float timer = 0f;
+        while (timer <= duration)
+        {
+            timer += Time.deltaTime;
+            
+            _vCamFollow.FollowOffset.z += speed * Time.deltaTime;
+            yield return null;
+        }
+
+        _vCamFollow.FollowOffset.z = Mathf.Clamp(_vCamFollow.FollowOffset.z, _dollyOutMax, _dollyInMax);
     }
 }

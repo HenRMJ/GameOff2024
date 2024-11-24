@@ -1,7 +1,10 @@
 using System;
 using System.Xml;
+using ProjectDawn.Navigation;
+using Unity.AI.Navigation;
 using Unity.Collections;
 using Unity.Entities;
+using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
@@ -65,7 +68,7 @@ public class SelectionManager : MonoBehaviour
 
             if (multipleSelections)
             {
-                entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<LocalTransform, Mover>()
+                entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<LocalTransform, SetTarget>()
                     .WithPresent<Selected>().Build(entityManager);
 
                 entityArray = entityQuery.ToEntityArray(Allocator.Temp);
@@ -123,7 +126,7 @@ public class SelectionManager : MonoBehaviour
             OnSelectedEntitiesChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             Vector3 mouseWorldPosition = MouseWorldPosition.Instance.GetPosition();
 
@@ -151,8 +154,22 @@ public class SelectionManager : MonoBehaviour
 
             if (collisionWorld.CastRay(raycastInput, out RaycastHit raycastHit))
             {
-                
+                /*if (entityManager.HasComponent<Building>())*/
             }
+
+            entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected, SetTarget>().Build(entityManager);
+
+            NativeArray<SetTarget> setTargets = entityQuery.ToComponentDataArray<SetTarget>(Allocator.Temp);
+            NativeArray<float3> movePositionArray = GenerateGridPositionArray(mouseWorldPosition, setTargets.Length);
+            
+            for (int i = 0; i < setTargets.Length; i++)
+            {
+                SetTarget target = setTargets[i];
+                target.TargetPosition = movePositionArray[i];
+                setTargets[i] = target;
+            }
+            
+            entityQuery.CopyFromComponentDataArray(setTargets);
         }
     }
 
@@ -169,4 +186,52 @@ public class SelectionManager : MonoBehaviour
         return new Rect(lowerLeftCorner.x, lowerLeftCorner.y, upperRightCorner.x - lowerLeftCorner.x,
             upperRightCorner.y - lowerLeftCorner.y);
     }
+    
+    private NativeArray<float3> GenerateGridPositionArray(float3 targetPosition, int positionCount, int rowCount = 0)
+    {
+        NativeArray<float3> positionArray = new NativeArray<float3>(positionCount, Allocator.Temp);
+
+        if (positionCount == 0)
+        {
+            return positionArray;
+        }
+
+        // Automatically calculate row count if not specified
+        if (rowCount <= 0)
+        {
+            rowCount = (int)math.ceil((int)math.sqrt(positionCount)); // Create a roughly square grid
+        }
+
+        int columnCount = (int)math.ceil((float)positionCount / rowCount); // Number of columns
+        float gridSpacing = 2f; // Spacing between grid cells
+
+        int positionIndex = 0;
+        for (int row = 0; row < rowCount; row++)
+        {
+            for (int col = 0; col < columnCount; col++)
+            {
+                if (positionIndex >= positionCount)
+                {
+                    break;
+                }
+
+                float xOffset = col * gridSpacing - (gridSpacing * (rowCount / 2));
+                float zOffset = row * gridSpacing - (gridSpacing * (columnCount / 2));
+
+                // Generate grid position
+                float3 gridPosition = targetPosition + new float3(xOffset, 0, zOffset);
+
+                positionArray[positionIndex] = gridPosition;
+                positionIndex++;
+            }
+
+            if (positionIndex >= positionCount)
+            {
+                break;
+            }
+        }
+
+        return positionArray;
+    }
+
 }
