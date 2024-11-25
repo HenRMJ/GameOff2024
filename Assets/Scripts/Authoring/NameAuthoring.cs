@@ -1,4 +1,3 @@
-using Random = Unity.Mathematics.Random;
 using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
@@ -12,8 +11,9 @@ public class NameAuthoring : MonoBehaviour
             Entity entity = GetEntity(TransformUsageFlags.Dynamic);
             AddComponent(entity, new Name
             {
-                FirstName = NameDatabase.GetRandonFirstName(),
-                LastName = NameDatabase.GetRandomLastName()
+                FirstName = "First",
+                LastName = "Last",
+                InitiatedName = false
             });
         }
     }
@@ -23,4 +23,5 @@ public struct Name : IComponentData
 {
     public FixedString32Bytes FirstName;
     public FixedString32Bytes LastName;
+    public bool InitiatedName;
 }

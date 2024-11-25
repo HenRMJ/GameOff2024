@@ -105,7 +105,7 @@ public class SelectionManager : MonoBehaviour
                     Filter = new CollisionFilter
                     {
                         BelongsTo = ~0u,
-                        CollidesWith = 1u << 6,
+                        CollidesWith = 1u << 6 | 1u << 7,
                         GroupIndex = 0
                     }
                 };
@@ -119,6 +119,7 @@ public class SelectionManager : MonoBehaviour
                         selected.onSelected = true;
                         entityManager.SetComponentData(raycastHit.Entity, selected);
                     }
+                    
                 }
             }
             

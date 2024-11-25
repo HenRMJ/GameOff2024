@@ -52,8 +52,7 @@ public struct EntitiesReferences : IComponentData
 {
     public Entity CultistEntity;
     public BlobAssetReference<NameBlob> NamesBlob;
-    public int RandomSeed;
-    public Unity.Mathematics.Random Random;
+    public Random Random;
 }
 
 public struct NameBlob

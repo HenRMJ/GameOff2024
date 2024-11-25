@@ -21,4 +21,9 @@ public class PlayerInput : MonoBehaviour
         Move = _gamePlayerInput.Player.Move;
         Look = _gamePlayerInput.Player.Look;
     }
+
+    public void OnDestroy()
+    {
+        _gamePlayerInput.Disable();
+    }
 }

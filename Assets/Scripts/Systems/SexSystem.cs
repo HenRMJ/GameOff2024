@@ -32,7 +32,6 @@ partial struct SexSystem : ISystem
         };
         
         EntitiesReferences entitiesReferences = SystemAPI.GetSingleton<EntitiesReferences>();
-
         EntityCommandBuffer entityCommandBuffer =
             SystemAPI.GetSingleton<EndSimulationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged);
         
@@ -141,27 +140,12 @@ partial struct SexSystem : ISystem
                 {
                     if (setPartnerArousal.ArousalValue != 0)
                     {
-                        Entity childEntity = entityCommandBuffer.Instantiate(entitiesReferences.CultistEntity);
-
-                        Random random = entitiesReferences.Random;
-
-                        random.state += random.state + ((uint)SystemAPI.Time.ElapsedTime * 1000);
-                        ref NameBlob names = ref entitiesReferences.NamesBlob.Value;
-                        
-                        entityCommandBuffer.SetComponent(childEntity, new Name
-                        {
-                            FirstName = names.FirstNames[random.NextInt(0, names.FirstNames.Length)],
-                            LastName = names.LastNames[random.NextInt(0, names.LastNames.Length)]
-                        });
-
-                        entitiesReferences.Random = random;
-                        SystemAPI.SetSingleton(entitiesReferences);
+                        entityCommandBuffer.Instantiate(entitiesReferences.CultistEntity);
                     }
                     
                     targetOverride.ValueRW.TargetEntity = Entity.Null;
                     arousal.ValueRW.Partner = Entity.Null;
                     arousal.ValueRW.ArousalValue = 0;
-
                 }
             }
         }

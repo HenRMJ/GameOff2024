@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SeekValue: 5
   HappinessThresshold: 2
-  ReproductionRangeSq: 3
+  ReproductionRangeSq: 1
   CheckTimer: 3
   SeekDistance: 10
 --- !u!114 &7820452981368857971
