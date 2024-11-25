@@ -76,3 +76,10 @@ crashlytics-build.properties
 /Assets/Plugins/Sirenix
 /Packages/com.projectdawn.navigation.crowds
 /Packages/com.projectdawn.navigation
+/Packages/com.distantlands.cozy.blocks
+/Packages/com.distantlands.cozy.core
+/Packages/com.distantlands.cozy.eclipse
+/Packages/com.distantlands.cozy.habits
+/Packages/com.distantlands.cozy.link
+/Packages/com.distantlands.cozy.plume
+/Packages/com.distantlands.cozy.resound
