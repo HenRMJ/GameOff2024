@@ -5,7 +5,9 @@ using Random = Unity.Mathematics.Random;
 
 public class EntitiesReferencesAuthoring : MonoBehaviour
 {
-    [SerializeField] private GameObject cultistPrefab;
+    [SerializeField] private GameObject farmerCultistPrefab;
+    [SerializeField] private GameObject builderCulstitPrefab;
+    [SerializeField] private GameObject followerCultistPrefab;
 
     public class Baker : Baker<EntitiesReferencesAuthoring>
     {
@@ -35,11 +37,12 @@ public class EntitiesReferencesAuthoring : MonoBehaviour
                 }
 
                 BlobAssetReference<NameBlob> namesBlob = builder.CreateBlobAssetReference<NameBlob>(Allocator.Persistent);
-
-                // Add the component with the BlobAssetReference
+                
                 AddComponent(entity, new EntitiesReferences
                 {
-                    CultistEntity = GetEntity(authoring.cultistPrefab, TransformUsageFlags.Dynamic),
+                    BuilderCultistEntity = GetEntity(authoring.builderCulstitPrefab, TransformUsageFlags.Dynamic),
+                    FarmerCultistEntity = GetEntity(authoring.farmerCultistPrefab, TransformUsageFlags.Dynamic),
+                    FollowerCultistEntity = GetEntity(authoring.followerCultistPrefab, TransformUsageFlags.Dynamic),
                     NamesBlob = namesBlob,
                     Random = new Random((uint)System.Environment.TickCount)
                 });
@@ -50,7 +53,9 @@ public class EntitiesReferencesAuthoring : MonoBehaviour
 
 public struct EntitiesReferences : IComponentData
 {
-    public Entity CultistEntity;
+    public Entity BuilderCultistEntity;
+    public Entity FarmerCultistEntity;
+    public Entity FollowerCultistEntity;
     public BlobAssetReference<NameBlob> NamesBlob;
     public Random Random;
 }

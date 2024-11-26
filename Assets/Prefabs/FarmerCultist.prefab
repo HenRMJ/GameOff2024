@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 3005252707751816117}
   - component: {fileID: 8686247449725141036}
   m_Layer: 6
-  m_Name: Cultist
+  m_Name: FarmerCultist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

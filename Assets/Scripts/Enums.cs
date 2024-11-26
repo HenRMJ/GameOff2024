@@ -8,3 +8,10 @@ public enum BuildingTypes
     Well,
     Pond,
 }
+
+public enum CultistTypes
+{
+    Follower,
+    Farmer,
+    Builder
+}

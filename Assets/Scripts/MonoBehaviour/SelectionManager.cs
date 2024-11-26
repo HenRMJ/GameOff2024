@@ -1,13 +1,11 @@
 using System;
-using System.Xml;
-using ProjectDawn.Navigation;
-using Unity.AI.Navigation;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Ray = UnityEngine.Ray;
 using RaycastHit = Unity.Physics.RaycastHit;
 
@@ -18,6 +16,7 @@ public class SelectionManager : MonoBehaviour
     public event EventHandler OnSelectionAreaStart;
     public event EventHandler OnSelectionAreaEnd;
     public event EventHandler OnSelectedEntitiesChanged;
+    public event EventHandler<BuildingTypes> OnBuildingSelected;
 
     private Vector2 selectionStartMousePosition;
 
@@ -35,7 +34,7 @@ public class SelectionManager : MonoBehaviour
 
     private void Update()
     {
-        // if (EventSystem.current.IsPointerOverGameObject()) return;
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         if (Input.GetMouseButtonDown(0))
         {
             selectionStartMousePosition = Input.mousePosition;
@@ -52,13 +51,7 @@ public class SelectionManager : MonoBehaviour
 
             if (!Input.GetKey(KeyCode.LeftShift))
             {
-                for (int i = 0; i < entityArray.Length; i++)
-                {
-                    entityManager.SetComponentEnabled<Selected>(entityArray[i], false);
-                    Selected selected = selectedArray[i];
-                    selected.onDeselected = true;
-                    entityManager.SetComponentData(entityArray[i], selected);
-                }
+                DeselectEntities(entityArray, entityManager, selectedArray);
             }
 
             Rect selectionAreaRect = GetSelectionAreaRect();
@@ -119,7 +112,13 @@ public class SelectionManager : MonoBehaviour
                         selected.onSelected = true;
                         entityManager.SetComponentData(raycastHit.Entity, selected);
                     }
-                    
+
+                    if (entityManager.HasComponent<BuildingType>(raycastHit.Entity))
+                    {
+                        DeselectEntities(entityArray, entityManager, selectedArray);
+                        OnBuildingSelected?.Invoke(this, 
+                            entityManager.GetComponentData<BuildingType>(raycastHit.Entity).Building);
+                    }
                 }
             }
             
@@ -155,7 +154,10 @@ public class SelectionManager : MonoBehaviour
 
             if (collisionWorld.CastRay(raycastInput, out RaycastHit raycastHit))
             {
-                /*if (entityManager.HasComponent<Building>())*/
+                if (entityManager.HasComponent<BuildingType>(raycastHit.Entity))
+                {
+                    // Command the entities to move towards the building and complete an action
+                }
             }
 
             entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected, SetTarget>().Build(entityManager);
@@ -171,6 +173,17 @@ public class SelectionManager : MonoBehaviour
             }
             
             entityQuery.CopyFromComponentDataArray(setTargets);
+        }
+    }
+
+    private static void DeselectEntities(NativeArray<Entity> entityArray, EntityManager entityManager, NativeArray<Selected> selectedArray)
+    {
+        for (int i = 0; i < entityArray.Length; i++)
+        {
+            entityManager.SetComponentEnabled<Selected>(entityArray[i], false);
+            Selected selected = selectedArray[i];
+            selected.onDeselected = true;
+            entityManager.SetComponentData(entityArray[i], selected);
         }
     }
 

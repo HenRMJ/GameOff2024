@@ -11,10 +11,10 @@ partial struct SexSystem : ISystem
     [BurstCompile]
     public void OnCreate(ref SystemState state)
     {
+        state.RequireForUpdate<School>();
         state.RequireForUpdate<EndSimulationEntityCommandBufferSystem.Singleton>();
         state.RequireForUpdate<EntitiesReferences>();
         state.RequireForUpdate<PhysicsWorldSingleton>();
-
     }
 
     [BurstCompile]
@@ -32,8 +32,7 @@ partial struct SexSystem : ISystem
         };
         
         EntitiesReferences entitiesReferences = SystemAPI.GetSingleton<EntitiesReferences>();
-        EntityCommandBuffer entityCommandBuffer =
-            SystemAPI.GetSingleton<EndSimulationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged);
+        School school = SystemAPI.GetSingleton<School>();
         
         foreach ((RefRW<TargetOverride> targetOverride, RefRO<LocalTransform> localTransform, RefRO<Happiness> happiness, RefRW<Arousal> arousal, Entity entity) 
                  in SystemAPI.Query<RefRW<TargetOverride>, RefRO<LocalTransform>, RefRO<Happiness>, RefRW<Arousal>>().WithEntityAccess())
@@ -53,7 +52,7 @@ partial struct SexSystem : ISystem
 
                     if (partnerArousal.ArousalValue != 0)
                     {
-                        entityCommandBuffer.Instantiate(entitiesReferences.CultistEntity);
+                        school.Children++;
                     }
                     
                     targetOverride.ValueRW.TargetEntity = Entity.Null;
@@ -140,7 +139,7 @@ partial struct SexSystem : ISystem
                 {
                     if (setPartnerArousal.ArousalValue != 0)
                     {
-                        entityCommandBuffer.Instantiate(entitiesReferences.CultistEntity);
+                        school.Children++;
                     }
                     
                     targetOverride.ValueRW.TargetEntity = Entity.Null;
@@ -149,5 +148,7 @@ partial struct SexSystem : ISystem
                 }
             }
         }
+
+        SystemAPI.SetSingleton(school);
     }
 }
