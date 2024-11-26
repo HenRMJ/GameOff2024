@@ -1,3 +1,4 @@
+using Rukhanka;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
@@ -8,13 +9,16 @@ using Unity.Transforms;
 [UpdateAfter(typeof(FeedingSystem))]
 partial struct SexSystem : ISystem
 {
+    private FastAnimatorParameter _fuckingParam;
+    
     [BurstCompile]
     public void OnCreate(ref SystemState state)
     {
         state.RequireForUpdate<School>();
         state.RequireForUpdate<EndSimulationEntityCommandBufferSystem.Singleton>();
-        state.RequireForUpdate<EntitiesReferences>();
         state.RequireForUpdate<PhysicsWorldSingleton>();
+
+        _fuckingParam = new FastAnimatorParameter("fucking");
     }
 
     [BurstCompile]
@@ -31,11 +35,10 @@ partial struct SexSystem : ISystem
             GroupIndex = 0
         };
         
-        EntitiesReferences entitiesReferences = SystemAPI.GetSingleton<EntitiesReferences>();
         School school = SystemAPI.GetSingleton<School>();
         
-        foreach ((RefRW<TargetOverride> targetOverride, RefRO<LocalTransform> localTransform, RefRO<Happiness> happiness, RefRW<Arousal> arousal, Entity entity) 
-                 in SystemAPI.Query<RefRW<TargetOverride>, RefRO<LocalTransform>, RefRO<Happiness>, RefRW<Arousal>>().WithEntityAccess())
+        foreach ((AnimatorParametersAspect animatior, RefRW<TargetOverride> targetOverride, RefRO<LocalTransform> localTransform, RefRO<Happiness> happiness, RefRW<Arousal> arousal, Entity entity) 
+                 in SystemAPI.Query<AnimatorParametersAspect, RefRW<TargetOverride>, RefRO<LocalTransform>, RefRO<Happiness>, RefRW<Arousal>>().WithEntityAccess())
         {
             if (targetOverride.ValueRO.TargetEntity != Entity.Null)
             {
@@ -48,8 +51,16 @@ partial struct SexSystem : ISystem
                 if (distanceSq <=
                     arousal.ValueRO.ReproductionRangeSq)
                 {
+                    animatior.SetParameterValue(_fuckingParam, true);
+
+                    arousal.ValueRW.FuckingTimer += SystemAPI.Time.DeltaTime;
+                    if (arousal.ValueRO.FuckingTimer <= arousal.ValueRO.TimeToFuck) continue;
+                    arousal.ValueRW.FuckingTimer = 0f;
+                    
                     Arousal partnerArousal = SystemAPI.GetComponent<Arousal>(arousal.ValueRW.Partner);
 
+                    animatior.SetParameterValue(_fuckingParam, false);
+                    
                     if (partnerArousal.ArousalValue != 0)
                     {
                         school.Children++;
@@ -137,6 +148,14 @@ partial struct SexSystem : ISystem
                 if (distanceSq <=
                     arousal.ValueRO.ReproductionRangeSq)
                 {
+                    animatior.SetParameterValue(_fuckingParam, true);
+                    
+                    arousal.ValueRW.FuckingTimer += SystemAPI.Time.DeltaTime;
+                    if (arousal.ValueRO.FuckingTimer <= arousal.ValueRO.TimeToFuck) continue;
+                    arousal.ValueRW.FuckingTimer = 0f;
+                    
+                    animatior.SetParameterValue(_fuckingParam, false);
+                    
                     if (setPartnerArousal.ArousalValue != 0)
                     {
                         school.Children++;

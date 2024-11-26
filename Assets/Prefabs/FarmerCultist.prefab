@@ -164,6 +164,7 @@ MonoBehaviour:
   ReproductionRangeSq: 1
   CheckTimer: 3
   SeekDistance: 10
+  TimeToFuck: 6
 --- !u!114 &7820452981368857971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +190,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a55f21627ad0f9f4583ccd9b3e23c993, type: 2}
   m_CullingMode: 2
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 

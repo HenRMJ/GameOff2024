@@ -917,6 +917,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8578995199488003073, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
+      propertyPath: rigConfigSource
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578995199488003073, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: animationCulling
       value: 1
       objectReference: {fileID: 0}
