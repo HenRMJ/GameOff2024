@@ -2,7 +2,6 @@ using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
-using UnityEngine;
 
 partial struct FeedingSystem : ISystem
 {
@@ -29,15 +28,15 @@ partial struct FeedingSystem : ISystem
         {
             numberOfMovers++;
         }
-
-        totalMeatConsumed.Capacity = numberOfMovers + 10;
-        totalWaterConsumed.Capacity = numberOfMovers + 10;
-        totalVegetablesConsumed.Capacity = numberOfMovers + 10;
         
         totalMeatConsumed.Clear(); 
         totalWaterConsumed.Clear();
         totalVegetablesConsumed.Clear();
 
+        totalMeatConsumed.Capacity = numberOfMovers + 10;
+        totalWaterConsumed.Capacity = numberOfMovers + 10;
+        totalVegetablesConsumed.Capacity = numberOfMovers + 10;
+        
         GatherRequirements gatherRequirements = new GatherRequirements
         {
             DeltaTime = SystemAPI.Time.DeltaTime,
@@ -104,9 +103,9 @@ public partial struct GatherRequirements : IJobEntity
     {
         if (nourishmentReceiver.Satiated) return;
             
-        nourishmentReceiver.timer += DeltaTime;
-        if (nourishmentReceiver.timer <= nourishmentReceiver.maxTime) return;
-        nourishmentReceiver.timer = 0f;
+        nourishmentReceiver.Timer += DeltaTime;
+        if (nourishmentReceiver.Timer <= nourishmentReceiver.MaxTime) return;
+        nourishmentReceiver.Timer = 0f;
 
         nourishmentReceiver.Contributed = true;
         

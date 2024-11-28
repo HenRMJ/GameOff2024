@@ -10,8 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5096016160084489558}
   - component: {fileID: 3983830288904128189}
+  - component: {fileID: 7617445751043626968}
   - component: {fileID: 6689103024352034763}
+  - component: {fileID: 4361573014552058790}
   - component: {fileID: 6669653436606422068}
+  - component: {fileID: 87540439961489920}
   - component: {fileID: 7563377131529779615}
   - component: {fileID: 2125624682915205572}
   - component: {fileID: 4089434806173714727}
@@ -60,11 +63,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5029470e405dc4ca4e5138ba993784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _age: 0
-  _hunger: 0
-  _health: 0
   _devotion: 0
-  _happiness: 0
+--- !u!114 &7617445751043626968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613636480395076373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a036b9da49bce8d46ad4b66a6729cdee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimerToAge: 600
 --- !u!114 &6689103024352034763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +93,21 @@ MonoBehaviour:
   _waterRequirement: 1
   _vegetableRequirement: 1
   _maxTime: 2
+--- !u!114 &4361573014552058790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613636480395076373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73dc4e38a50382e49aa12944e32117f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerMax: 5
+  startingHunger: 50
+  maxHunger: 100
 --- !u!114 &6669653436606422068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +121,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxTimer: 2.1
+--- !u!114 &87540439961489920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613636480395076373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2ac3c8b5a895c489e60d65d4ae3598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  maxHealth: 100
+  timerMax: 10
+  hungerThreshold: 20
 --- !u!114 &7563377131529779615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,11 +202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56171aac3bae7e6468a23bfc90b4e831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SeekValue: 5
-  HappinessThresshold: 2
+  SeekValue: 60
+  HappinessThresshold: 30
   ReproductionRangeSq: 1
   CheckTimer: 3
-  SeekDistance: 10
+  SeekDistance: 5
   TimeToFuck: 6
 --- !u!114 &7820452981368857971
 MonoBehaviour:
@@ -212,7 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigConfigSource: 0
   avatar: {fileID: 9000000, guid: 8a7f9b558a11967419f1b861d9b63d68, type: 3}
-  applyRootMotion: 1
+  applyRootMotion: 0
   animationCulling: 1
   boneEntityStrippingMode: 1
   boneStrippingMask: {fileID: 0}

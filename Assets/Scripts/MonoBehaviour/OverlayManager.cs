@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class OverlayManager : MonoBehaviour
 {
+    [SerializeField] private AstarPath path;
+    
     private void Start()
     {
         SelectionManager.Instance.OnBuildingSelected += SelectionManager_OnBuildingSelected;
@@ -12,7 +14,7 @@ public class OverlayManager : MonoBehaviour
     {
         SelectionManager.Instance.OnBuildingSelected -= SelectionManager_OnBuildingSelected;
     }
-
+    
     private void SelectionManager_OnBuildingSelected(object sender, BuildingTypes buildingType)
     {
         gameObject.SetActive(true);

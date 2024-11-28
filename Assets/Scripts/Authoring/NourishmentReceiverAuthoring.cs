@@ -18,7 +18,7 @@ public class NourishmentReceiverAuthoring : MonoBehaviour
                 MeatRequirment = authoring._meatRequirment,
                 WaterRequirement = authoring._waterRequirement,
                 VegetableRequirement = authoring._vegetableRequirement,
-                maxTime = authoring._maxTime
+                MaxTime = authoring._maxTime
             });
         }
     }
@@ -29,8 +29,8 @@ public struct NourishmentReceiver : IComponentData
     public int MeatRequirment;
     public int WaterRequirement;
     public int VegetableRequirement;
-    public float timer;
-    public float maxTime;
+    public float Timer;
+    public float MaxTime;
     public bool Satiated;
     public bool Contributed;
 }

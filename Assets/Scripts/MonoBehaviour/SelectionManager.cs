@@ -116,6 +116,7 @@ public class SelectionManager : MonoBehaviour
                     if (entityManager.HasComponent<BuildingType>(raycastHit.Entity))
                     {
                         DeselectEntities(entityArray, entityManager, selectedArray);
+                        RescanScene.Rescan();
                         OnBuildingSelected?.Invoke(this, 
                             entityManager.GetComponentData<BuildingType>(raycastHit.Entity).Building);
                     }
