@@ -55,10 +55,12 @@ partial struct DevotionSystem : ISystem
                     SystemAPI.HasComponent<Cultist>(hit.Entity))
                 {
                     Cultist cultist = SystemAPI.GetComponent<Cultist>(hit.Entity);
+                    cultist.Devotion++;
                     AnimatorParametersAspect animator = SystemAPI.GetAspect<AnimatorParametersAspect>(hit.Entity);
                     animator.SetTrigger(devoteTrigger);
                     
                     avatar.Devotion += cultist.Level;
+                    SystemAPI.SetComponent(hit.Entity, cultist);
                 }
             }
         }

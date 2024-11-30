@@ -5,6 +5,7 @@ public class AvatarAuthoring : MonoBehaviour
 {
     [SerializeField] private float range;
     [SerializeField] private float devotionTimer;
+    [SerializeField] private int baseLevel;
     
     public class Baker : Baker<AvatarAuthoring>
     {
@@ -13,7 +14,8 @@ public class AvatarAuthoring : MonoBehaviour
             AddComponent(GetEntity(TransformUsageFlags.Dynamic), new Avatar
             {
                 Range = authoring.range,
-                DevotionTimer = authoring.devotionTimer
+                DevotionTimer = authoring.devotionTimer,
+                BaseContributionCurve = authoring.baseLevel
             });
         }
     }

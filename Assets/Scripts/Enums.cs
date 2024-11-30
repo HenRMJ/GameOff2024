@@ -3,11 +3,7 @@ public enum BuildingTypes
     Kitchen,
     School,
     Avatar,
-    Mine,
-    Forest,
-    Tree,
-    Well,
-    Pond,
+    Foundry
 }
 
 public enum CultistTypes
@@ -15,4 +11,14 @@ public enum CultistTypes
     Follower,
     Farmer,
     Builder
+}
+
+public enum CultResources
+{
+    None,
+    Wood,
+    Rock,
+    Water,
+    Meat,
+    Vegetables,
 }

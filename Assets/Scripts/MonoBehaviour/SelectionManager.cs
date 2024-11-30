@@ -151,29 +151,49 @@ public class SelectionManager : MonoBehaviour
                 }
             };
 
-            bool selectedBuilding = false;
+            bool selectedResource = false;
 
+            LocalTransform localTransform = new LocalTransform();
+            CultResource cultResource = new CultResource();
+            
             if (collisionWorld.CastRay(raycastInput, out RaycastHit raycastHit))
             {
-                if (entityManager.HasComponent<BuildingType>(raycastHit.Entity))
+                if (entityManager.Exists(raycastHit.Entity) &&
+                    entityManager.HasComponent<CultResource>(raycastHit.Entity))
                 {
-                    // Command the entities to move towards the building and complete an action
+                    localTransform = entityManager.GetComponentData<LocalTransform>(raycastHit.Entity);
+                    cultResource = entityManager.GetComponentData<CultResource>(raycastHit.Entity);
+                    selectedResource = true;
                 }
             }
 
-            entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected, SetTarget>().Build(entityManager);
+            entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected, SetTarget, CultResource>().Build(entityManager);
 
             NativeArray<SetTarget> setTargets = entityQuery.ToComponentDataArray<SetTarget>(Allocator.Temp);
+            NativeArray<CultResource> cultResources = entityQuery.ToComponentDataArray<CultResource>(Allocator.Temp);
             NativeArray<float3> movePositionArray = GenerateGridPositionArray(mouseWorldPosition, setTargets.Length);
             
             for (int i = 0; i < setTargets.Length; i++)
             {
                 SetTarget target = setTargets[i];
-                target.TargetPosition = movePositionArray[i];
+                CultResource entityCultResource = cultResources[i];
+                
+                if (selectedResource)
+                {
+                    target.TargetPosition = localTransform.Position;
+                    entityCultResource.Resource = cultResource.Resource;
+                }
+                else
+                {
+                    target.TargetPosition = movePositionArray[i];
+                }
+                
                 setTargets[i] = target;
+                cultResources[i] = entityCultResource;
             }
             
             entityQuery.CopyFromComponentDataArray(setTargets);
+            entityQuery.CopyFromComponentDataArray(cultResources);
         }
     }
 
@@ -248,5 +268,4 @@ public class SelectionManager : MonoBehaviour
 
         return positionArray;
     }
-
 }

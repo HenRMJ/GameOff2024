@@ -32,7 +32,7 @@ public partial struct LevelingJob : IJobEntity
     {
         if (!Mathf.Approximately(cultist.Devotion, cultist.PreviousDevotion))
         {
-            cultist.Devotion++;
+            cultist.PreviousDevotion = cultist.Devotion;
             cultist.Level = (int)(BaseLevel * math.log10(cultist.Devotion + 1));
         }
     }
