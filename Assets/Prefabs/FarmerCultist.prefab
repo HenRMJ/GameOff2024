@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5096016160084489558}
   - component: {fileID: 3983830288904128189}
+  - component: {fileID: 6936368317660330583}
   - component: {fileID: 7617445751043626968}
   - component: {fileID: 6689103024352034763}
   - component: {fileID: 4361573014552058790}
@@ -21,6 +22,7 @@ GameObject:
   - component: {fileID: 4089434806173714727}
   - component: {fileID: 5542236132186918964}
   - component: {fileID: 7820452981368857971}
+  - component: {fileID: 3895901777651342285}
   - component: {fileID: 7918474772965436720}
   - component: {fileID: 8578995199488003073}
   - component: {fileID: 552523748155387061}
@@ -64,7 +66,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5029470e405dc4ca4e5138ba993784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _devotion: 0
+  _devotion: 1
+--- !u!114 &6936368317660330583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613636480395076373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba464d9f8d69fa4e85d59aa817a08cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contributationInterval: 1
 --- !u!114 &7617445751043626968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,8 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meatRequirment: 1
-  _waterRequirement: 1
-  _vegetableRequirement: 1
+  _waterRequirement: 3
+  _vegetableRequirement: 3
   _maxTime: 2
 --- !u!114 &4361573014552058790
 MonoBehaviour:
@@ -235,6 +250,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab2e12b6efabc24388890cdf991819b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3895901777651342285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613636480395076373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c11c2d4be6a794eb0c737276a4ab78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
 --- !u!95 &7918474772965436720
 Animator:
   serializedVersion: 5

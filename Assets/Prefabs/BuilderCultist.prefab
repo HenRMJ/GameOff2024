@@ -83,6 +83,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuilderCultist
       objectReference: {fileID: 0}
+    - target: {fileID: 3895901777651342285, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5096016160084489558, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.74
@@ -122,6 +126,14 @@ PrefabInstance:
     - target: {fileID: 5096016160084489558, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689103024352034763, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
+      propertyPath: _meatRequirment
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689103024352034763, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
+      propertyPath: _waterRequirement
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7918474772965436720, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: m_Avatar

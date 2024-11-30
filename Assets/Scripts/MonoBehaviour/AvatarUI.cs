@@ -16,8 +16,6 @@ public class AvatarUI : MonoBehaviour
 
     private void Update()
     {
-        if (!gameObject.activeInHierarchy) return;
-
         EntityQuery entityQuery = _entityManager.CreateEntityQuery(typeof(Avatar));
         Avatar avatar = entityQuery.GetSingleton<Avatar>();
 

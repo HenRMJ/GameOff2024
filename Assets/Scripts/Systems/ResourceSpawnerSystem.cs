@@ -48,10 +48,14 @@ partial struct ResourceSpawnerSystem : ISystem
             {
                 Entity spawnedEntity = state.EntityManager.Instantiate(spawner.ValueRO.ResourceEntity);
                 LocalTransform transform = state.EntityManager.GetComponentData<LocalTransform>(spawnedEntity);
-
+                ResourceContainer container = state.EntityManager.GetComponentData<ResourceContainer>(spawnedEntity);
+                
                 transform.Position = spawnPosition;
+                container.Resistance += spawner.ValueRW.Random.NextInt(-10, 10);
+                container.AvailableResources += spawner.ValueRW.Random.NextInt(-5, 5);
                 
                 state.EntityManager.SetComponentData(spawnedEntity, transform);
+                state.EntityManager.SetComponentData(spawnedEntity, container);
                 RescanScene.Rescan();
             }
         }

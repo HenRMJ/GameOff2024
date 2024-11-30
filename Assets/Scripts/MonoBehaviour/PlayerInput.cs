@@ -9,7 +9,6 @@ public class PlayerInput : MonoBehaviour
     private GamePlayerInput _gamePlayerInput;
 
     public InputAction Move;
-    public InputAction Look;
     
     public void Awake()
     {
@@ -19,7 +18,6 @@ public class PlayerInput : MonoBehaviour
         _gamePlayerInput.Player.Enable();
         
         Move = _gamePlayerInput.Player.Move;
-        Look = _gamePlayerInput.Player.Look;
     }
 
     public void OnDestroy()

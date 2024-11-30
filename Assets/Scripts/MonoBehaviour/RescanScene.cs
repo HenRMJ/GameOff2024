@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Pathfinding;
 using Unity.Collections;
 using UnityEngine;
 using BoxCollider = UnityEngine.BoxCollider;
-using SphereCollider = UnityEngine.SphereCollider;
 using Unity.Entities;
 using Unity.Physics;
 using Unity.Transforms;
@@ -13,10 +11,12 @@ using Unity.Transforms;
 public class RescanScene : MonoBehaviour
 {
     private static Dictionary<GameObject, bool> _existingGameObjects = new();
+    private static GameObject parentObject;
 
     private void Start()
     {
         AstarPath.active.Scan();
+        parentObject = gameObject;
     }
 
     public static void Rescan()
@@ -41,6 +41,7 @@ public class RescanScene : MonoBehaviour
             
             GameObject tempCollider = new GameObject("tempCollider");
             tempCollider.layer = LayerMask.NameToLayer("Building");
+            tempCollider.transform.parent = parentObject.transform;
 
             if (collider.Value.Value.Type == ColliderType.Box) {
                 unsafe
@@ -54,17 +55,6 @@ public class RescanScene : MonoBehaviour
                     cut.center = boxCollider.center;
                     cut.rectangleSize = new Vector2(boxGeometry.Size.x, boxGeometry.Size.z);
                     cut.height = 10f;
-                }
-            }
-            else if (collider.Value.Value.Type == ColliderType.Sphere) {
-                unsafe
-                {
-                    SphereCollider sphereCollider = tempCollider.AddComponent<SphereCollider>();
-                    
-                    // Set the radius and position based on the collider's dimensions
-                    SphereGeometry sphereGeometry = ((Unity.Physics.SphereCollider*)collider.ColliderPtr)->Geometry;
-                    sphereCollider.radius = sphereGeometry.Radius;
-                    sphereCollider.center = sphereGeometry.Center;
                 }
             }
             

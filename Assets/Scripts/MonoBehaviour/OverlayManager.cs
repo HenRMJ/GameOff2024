@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class OverlayManager : MonoBehaviour
@@ -6,8 +7,17 @@ public class OverlayManager : MonoBehaviour
     
     private void Start()
     {
+        
         SelectionManager.Instance.OnBuildingSelected += SelectionManager_OnBuildingSelected;
         gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnDestroy()

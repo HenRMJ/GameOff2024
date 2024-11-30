@@ -116,7 +116,6 @@ public class SelectionManager : MonoBehaviour
                     if (entityManager.HasComponent<BuildingType>(raycastHit.Entity))
                     {
                         DeselectEntities(entityArray, entityManager, selectedArray);
-                        RescanScene.Rescan();
                         OnBuildingSelected?.Invoke(this, 
                             entityManager.GetComponentData<BuildingType>(raycastHit.Entity).Building);
                     }
@@ -159,7 +158,7 @@ public class SelectionManager : MonoBehaviour
             if (collisionWorld.CastRay(raycastInput, out RaycastHit raycastHit))
             {
                 if (entityManager.Exists(raycastHit.Entity) &&
-                    entityManager.HasComponent<CultResource>(raycastHit.Entity))
+                    entityManager.HasComponent<ResourceContainer>(raycastHit.Entity))
                 {
                     localTransform = entityManager.GetComponentData<LocalTransform>(raycastHit.Entity);
                     cultResource = entityManager.GetComponentData<CultResource>(raycastHit.Entity);
@@ -167,31 +166,39 @@ public class SelectionManager : MonoBehaviour
                 }
             }
 
-            entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected, SetTarget, CultResource>().Build(entityManager);
+            entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected, SetTarget, Productivity, CultResource>().Build(entityManager);
 
             NativeArray<SetTarget> setTargets = entityQuery.ToComponentDataArray<SetTarget>(Allocator.Temp);
             NativeArray<CultResource> cultResources = entityQuery.ToComponentDataArray<CultResource>(Allocator.Temp);
+            NativeArray<Productivity> cultProductivities =
+                entityQuery.ToComponentDataArray<Productivity>(Allocator.Temp);
             NativeArray<float3> movePositionArray = GenerateGridPositionArray(mouseWorldPosition, setTargets.Length);
             
             for (int i = 0; i < setTargets.Length; i++)
             {
                 SetTarget target = setTargets[i];
                 CultResource entityCultResource = cultResources[i];
+                Productivity entityProductivity = cultProductivities[i];
                 
                 if (selectedResource)
                 {
                     target.TargetPosition = localTransform.Position;
                     entityCultResource.Resource = cultResource.Resource;
+                    entityProductivity.ContributationEntity = raycastHit.Entity;
                 }
                 else
                 {
                     target.TargetPosition = movePositionArray[i];
+                    entityCultResource.Resource = CultResources.None;
+                    entityProductivity.ContributationEntity = Entity.Null;
                 }
                 
                 setTargets[i] = target;
                 cultResources[i] = entityCultResource;
+                cultProductivities[i] = entityProductivity;
             }
             
+            entityQuery.CopyFromComponentDataArray(cultProductivities);
             entityQuery.CopyFromComponentDataArray(setTargets);
             entityQuery.CopyFromComponentDataArray(cultResources);
         }
@@ -230,15 +237,14 @@ public class SelectionManager : MonoBehaviour
         {
             return positionArray;
         }
-
-        // Automatically calculate row count if not specified
+        
         if (rowCount <= 0)
         {
-            rowCount = (int)math.ceil((int)math.sqrt(positionCount)); // Create a roughly square grid
+            rowCount = (int)math.ceil((int)math.sqrt(positionCount));
         }
 
-        int columnCount = (int)math.ceil((float)positionCount / rowCount); // Number of columns
-        float gridSpacing = 2f; // Spacing between grid cells
+        int columnCount = (int)math.ceil((float)positionCount / rowCount);
+        float gridSpacing = 2f;
 
         int positionIndex = 0;
         for (int row = 0; row < rowCount; row++)

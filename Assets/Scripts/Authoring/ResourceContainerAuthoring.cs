@@ -5,6 +5,7 @@ public class ResourceContainerAuthoring : MonoBehaviour
 {
     [SerializeField] private int resourcesAvailable;
     [SerializeField] private int resistanceToCollection;
+    [SerializeField] private CultistTypes typeToGiveBoost;
     
     public class Baker : Baker<ResourceContainerAuthoring>
     {
@@ -14,7 +15,8 @@ public class ResourceContainerAuthoring : MonoBehaviour
             AddComponent(entity, new ResourceContainer
             {
                 AvailableResources = authoring.resourcesAvailable,
-                Resistance = authoring.resistanceToCollection
+                Resistance = authoring.resistanceToCollection,
+                TypeToGiveBoost = authoring.typeToGiveBoost
             });
         }
     }
@@ -22,6 +24,9 @@ public class ResourceContainerAuthoring : MonoBehaviour
 
 public struct ResourceContainer : IComponentData
 {
+    public CultistTypes TypeToGiveBoost;
+    public bool MarkedForBoost;
     public int AvailableResources;
     public int Resistance;
+    public int ResistanceAccumulator;
 }
