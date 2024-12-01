@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class OverlayManager : MonoBehaviour
 {
-    [SerializeField] private AstarPath path;
-    
     private void Start()
     {
         
         SelectionManager.Instance.OnBuildingSelected += SelectionManager_OnBuildingSelected;
         gameObject.SetActive(false);
+        SelectionManager_OnBuildingSelected(this, (BuildingTypes)4);
     }
 
     private void Update()
@@ -35,5 +34,10 @@ public class OverlayManager : MonoBehaviour
         }
 
         transform.GetChild((int)buildingType).gameObject.SetActive(true);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
