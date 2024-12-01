@@ -8,6 +8,7 @@ public class EntitiesReferencesAuthoring : MonoBehaviour
     [SerializeField] private GameObject farmerCultistPrefab;
     [SerializeField] private GameObject builderCulstitPrefab;
     [SerializeField] private GameObject followerCultistPrefab;
+    [SerializeField] private GameObject brothelPrefab;
 
     public class Baker : Baker<EntitiesReferencesAuthoring>
     {
@@ -43,6 +44,7 @@ public class EntitiesReferencesAuthoring : MonoBehaviour
                     BuilderCultistEntity = GetEntity(authoring.builderCulstitPrefab, TransformUsageFlags.Dynamic),
                     FarmerCultistEntity = GetEntity(authoring.farmerCultistPrefab, TransformUsageFlags.Dynamic),
                     FollowerCultistEntity = GetEntity(authoring.followerCultistPrefab, TransformUsageFlags.Dynamic),
+                    BrothelEntity = GetEntity(authoring.brothelPrefab, TransformUsageFlags.Dynamic),
                     NamesBlob = namesBlob,
                     Random = new Random((uint)System.Environment.TickCount)
                 });
@@ -56,6 +58,7 @@ public struct EntitiesReferences : IComponentData
     public Entity BuilderCultistEntity;
     public Entity FarmerCultistEntity;
     public Entity FollowerCultistEntity;
+    public Entity BrothelEntity;
     public BlobAssetReference<NameBlob> NamesBlob;
     public Random Random;
 }

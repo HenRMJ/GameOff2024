@@ -63,6 +63,7 @@ partial struct ResourceSpawnerSystem : ISystem
                 
                 state.EntityManager.SetComponentData(spawnedEntity, transform);
                 state.EntityManager.SetComponentData(spawnedEntity, container);
+                RescanScene.Rescan();
             }
         }
     }

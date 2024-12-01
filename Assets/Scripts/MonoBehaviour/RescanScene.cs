@@ -7,25 +7,20 @@ using BoxCollider = UnityEngine.BoxCollider;
 using Unity.Entities;
 using Unity.Physics;
 using Unity.Transforms;
+using UnityEngine.AI;
 
 public class RescanScene : MonoBehaviour
 {
-    /*private static Dictionary<GameObject, bool> _existingGameObjects = new();
+    private static Dictionary<GameObject, bool> _existingGameObjects = new();
     private static GameObject parentObject;
 
     private void Start()
     {
-        AstarPath.active.Scan();
         parentObject = gameObject;
     }
 
     public static void Rescan()
     {
-        if (!AstarPath.active.graphs[0].isScanned)
-        {
-            AstarPath.active.Scan();
-        }
-        
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         EntityQuery entityQuery = entityManager.CreateEntityQuery(typeof(LocalTransform), typeof(PhysicsCollider));
 
@@ -53,13 +48,14 @@ public class RescanScene : MonoBehaviour
                 {
                     BoxCollider boxCollider = tempCollider.AddComponent<BoxCollider>();
                     BoxGeometry boxGeometry = ((Unity.Physics.BoxCollider*)collider.ColliderPtr)->Geometry;
-                    // Set the bounds based on the collider's dimensions
+                    
                     boxCollider.size = boxGeometry.Size;
                     boxCollider.center = boxGeometry.Center;
-                    NavmeshCut cut = tempCollider.AddComponent<NavmeshCut>();
+                    NavMeshObstacle cut = tempCollider.AddComponent<NavMeshObstacle>();
                     cut.center = boxCollider.center;
-                    cut.rectangleSize = new Vector2(boxGeometry.Size.x, boxGeometry.Size.z);
+                    cut.size = boxCollider.size;
                     cut.height = 10f;
+                    cut.carving = true;
                 }
             }
             
@@ -107,5 +103,5 @@ public class RescanScene : MonoBehaviour
         {
             _existingGameObjects[key] = false;
         }
-    }*/
+    }
 }
