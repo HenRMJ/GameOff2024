@@ -24,7 +24,10 @@ public class CultistInfoUI : MonoBehaviour
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         EntityQuery entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected, Name, Age, Health>().Build(entityManager);
 
+        NativeArray<Entity> entities = entityQuery.ToEntityArray(Allocator.Temp);
         NativeArray<Name> nameArray = entityQuery.ToComponentDataArray<Name>(Allocator.Temp);
+        NativeArray<Age> ageArray = entityQuery.ToComponentDataArray<Age>(Allocator.Temp);
+        NativeArray<Health> healthArray = entityQuery.ToComponentDataArray<Health>(Allocator.Temp);
 
         if (transform.childCount > 1)
         {
@@ -43,8 +46,11 @@ public class CultistInfoUI : MonoBehaviour
         for (int i = 0; i < nameArray.Length; i++)
         {
             Transform spawnedCultistPanel = Instantiate(transform.GetChild(0), transform);
-            spawnedCultistPanel.GetChild(0).GetComponent<TMP_Text>().text =
-                $"{nameArray[i].FirstName} {nameArray[i].LastName}";
+            IndividualCultistInfo info = spawnedCultistPanel.GetComponent<IndividualCultistInfo>();
+            info.Initalize(entities[i], 
+                $"{nameArray[i].FirstName} {nameArray[i].LastName}", 
+                ageArray[i].Value.ToString(),
+                (float)healthArray[i].Value / healthArray[i].MaxHealth);
 
             spawnedCultistPanel.gameObject.SetActive(true);
         }

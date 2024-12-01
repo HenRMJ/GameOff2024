@@ -4,14 +4,16 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class IndividualCultistInfo : MonoBehaviour
 {
     [SerializeField] private TMP_Text cultistName;
-    [SerializeField] private TMP_Text age;
+    [FormerlySerializedAs("age")] [SerializeField] private TMP_Text cultistAge;
     [SerializeField] private Image healthBar;
-
+    [SerializeField] private TMP_Dropdown dropdown;
+    
     [Header("Update Values")] 
     [SerializeField] private float updateInterval;
 
@@ -20,13 +22,15 @@ public class IndividualCultistInfo : MonoBehaviour
     private float _timer;
     private CultResources _resourceToSearchFor;
 
-    public void Initalize(Entity entity, string name, string age)
+    public void Initalize(Entity entity, string nameString, string age, float normalizedHealth)
     {
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         _entity = entity;
-        this.cultistName.text = name;
-        this.age.text = age;
-        _resourceToSearchFor = CultResources.None;
+        cultistName.text = nameString;
+        cultistAge.text = age;
+        _resourceToSearchFor = _entityManager.GetComponentData<CultResource>(entity).Resource;
+        dropdown.value = (int)_resourceToSearchFor;
+        healthBar.fillAmount = normalizedHealth;
     }
 
     private void Update()
@@ -47,28 +51,30 @@ public class IndividualCultistInfo : MonoBehaviour
         FindClosestTarget();
     }
 
-    public void SetSearchResource(CultResources resourceToSearchFor)
+    public void SetSearchResource(int resourceToSearchFor)
     {
-        _resourceToSearchFor = resourceToSearchFor;
+        _resourceToSearchFor = (CultResources)resourceToSearchFor;
+        FindClosestTarget();
     }
     
     private void FindClosestTarget()
     {
         RefRW<CultResource> resource = _entityManager.GetComponentDataRW<CultResource>(_entity);
+        RefRW<SetTarget> target = _entityManager.GetComponentDataRW<SetTarget>(_entity);
+        RefRW<Productivity> productivity = _entityManager.GetComponentDataRW<Productivity>(_entity);
+        LocalTransform localTransform = _entityManager.GetComponentData<LocalTransform>(_entity);
         
-        if (resource.ValueRO.Resource == CultResources.None ||
-            resource.ValueRO.Resource == CultResources.Meat)
+        if (_resourceToSearchFor != CultResources.None)
         {
-            RefRW<SetTarget> target = _entityManager.GetComponentDataRW<SetTarget>(_entity);
-            LocalTransform localTransform = _entityManager.GetComponentData<LocalTransform>(_entity);
-
             EntityQuery entityQuery = new EntityQueryBuilder(Allocator.Temp)
                 .WithAll<CultResource, ResourceContainer, LocalTransform>().Build(_entityManager);
             NativeArray<CultResource> resources = entityQuery.ToComponentDataArray<CultResource>(Allocator.Temp);
             NativeArray<LocalTransform> resourceTransforms =
                 entityQuery.ToComponentDataArray<LocalTransform>(Allocator.Temp);
+            NativeArray<Entity> resourceEntities = entityQuery.ToEntityArray(Allocator.Temp);
 
             float3 closestPosition = localTransform.Position;
+            Entity closestEntity = Entity.Null;
             float closestDistance = float.MaxValue;
 
             for (int i = 0; i < resources.Length; i++)
@@ -76,19 +82,29 @@ public class IndividualCultistInfo : MonoBehaviour
                 if (resources[i].Resource != _resourceToSearchFor) continue;
 
                 float3 entityPosition = resourceTransforms[i].Position;
-                float distanceSq = math.distancesq(localTransform.Position, entityPosition);
+                float distanceSq = math.distance(localTransform.Position, entityPosition);
 
                 if (distanceSq < closestDistance)
                 {
                     closestDistance = distanceSq;
                     closestPosition = entityPosition;
+                    closestEntity = resourceEntities[i];
                 }
             }
 
             resources.Dispose();
             resourceTransforms.Dispose();
 
+            if (closestEntity == Entity.Null) return;
+            
             target.ValueRW.TargetPosition = closestPosition;
+            productivity.ValueRW.ContributationEntity = closestEntity;
+            resource.ValueRW.Resource = _resourceToSearchFor;
+        }
+        else
+        {
+            resource.ValueRW.Resource = CultResources.None;
+            productivity.ValueRW.ContributationEntity = Entity.Null;
         }
     }
 }

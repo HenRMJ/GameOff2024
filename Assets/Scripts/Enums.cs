@@ -1,3 +1,5 @@
+using System;
+
 public enum BuildingTypes
 {
     Kitchen,
@@ -13,6 +15,7 @@ public enum CultistTypes
     Builder
 }
 
+[Serializable]
 public enum CultResources
 {
     None,

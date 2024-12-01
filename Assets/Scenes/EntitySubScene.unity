@@ -526,6 +526,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4406074409802483990, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: waitInterval
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
       value: Meat
@@ -910,6 +914,10 @@ PrefabInstance:
     - target: {fileID: 544264529594353935, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406074409802483990, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: waitInterval
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
@@ -1521,6 +1529,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4406074409802483990, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: waitInterval
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
       value: Meat
@@ -1751,6 +1763,10 @@ PrefabInstance:
     - target: {fileID: 544264529594353935, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406074409802483990, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: waitInterval
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
@@ -2059,6 +2075,10 @@ PrefabInstance:
     - target: {fileID: 544264529594353935, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406074409802483990, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: waitInterval
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
@@ -2920,6 +2940,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4406074409802483990, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: waitInterval
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
       value: Meat
@@ -3418,6 +3442,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4406074409802483990, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: waitInterval
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
       value: Meat
@@ -3634,6 +3662,10 @@ PrefabInstance:
     - target: {fileID: 544264529594353935, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406074409802483990, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: waitInterval
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
@@ -4006,6 +4038,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4406074409802483990, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: waitInterval
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
       value: Meat
@@ -4359,6 +4395,10 @@ PrefabInstance:
     - target: {fileID: 544264529594353935, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4406074409802483990, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: waitInterval
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
