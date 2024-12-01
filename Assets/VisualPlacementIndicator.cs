@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VisualPlacementIndicator : MonoBehaviour
@@ -8,31 +5,50 @@ public class VisualPlacementIndicator : MonoBehaviour
     [SerializeField] private Material[] _positiveMaterials;
     [SerializeField] private Material[] _negativeMaterials;
     [SerializeField] private MeshRenderer[] _renderers;
-
-    private int collidingWithCounter = 0;
+    [SerializeField] private LayerMask _buildingLayerMask;
+    [SerializeField] private float _clearanceRange;
     
-    private void OnTriggerEnter(Collider other)
-    {
-        collidingWithCounter++;
-        Debug.Log("Test");
+    private bool _previousCollided;
+    private bool _collided;
 
-        foreach (MeshRenderer render in _renderers)
+    private void Start()
+    {
+        Debug.Log("Something");
+    }
+
+    private void FixedUpdate()
+    {
+        int size = Physics.OverlapSphereNonAlloc(transform.position, _clearanceRange, new Collider[5], _buildingLayerMask);
+
+        if (size > 0)
         {
-            render.materials = _negativeMaterials;
+            _collided = true;
+
+            if (_previousCollided != _collided)
+            {
+                _previousCollided = _collided;
+                
+                foreach (MeshRenderer renderer in _renderers)
+                {
+                    renderer.materials = _negativeMaterials;
+                }
+            }
+        }
+        else
+        {
+            _collided = false;
+            
+            if (_previousCollided != _collided)
+            {
+                _previousCollided = _collided;
+                
+                foreach (MeshRenderer renderer in _renderers)
+                {
+                    renderer.materials = _positiveMaterials;
+                }
+            }
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        collidingWithCounter--;
-
-        Debug.Log("Test2");
-
-        if (collidingWithCounter > 0) return;
-        
-        foreach (MeshRenderer renderer in _renderers)
-        {
-            renderer.materials = _positiveMaterials;
-        }
-    }
+    public bool CanPlace() => !_collided;
 }

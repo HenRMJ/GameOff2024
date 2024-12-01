@@ -48,6 +48,11 @@ public class EntitiesReferencesAuthoring : MonoBehaviour
                     NamesBlob = namesBlob,
                     Random = new Random((uint)System.Environment.TickCount)
                 });
+                
+                AddComponent(entity, new CleanupNameBlob
+                {
+                    NamesBlob = namesBlob
+                });
             }
         }
     }
@@ -67,4 +72,9 @@ public struct NameBlob
 {
     public BlobArray<FixedString32Bytes> FirstNames;
     public BlobArray<FixedString32Bytes> LastNames;
+}
+
+public struct CleanupNameBlob : ICleanupComponentData
+{
+    public BlobAssetReference<NameBlob> NamesBlob;
 }

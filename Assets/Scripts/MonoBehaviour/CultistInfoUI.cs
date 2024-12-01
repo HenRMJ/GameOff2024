@@ -22,7 +22,7 @@ public class CultistInfoUI : MonoBehaviour
     private void SelectionManager_OnSelectedEntitiesChanged(object sender, EventArgs e)
     {
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-        EntityQuery entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected, Name>().Build(entityManager);
+        EntityQuery entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected, Name, Age, Health>().Build(entityManager);
 
         NativeArray<Name> nameArray = entityQuery.ToComponentDataArray<Name>(Allocator.Temp);
 
