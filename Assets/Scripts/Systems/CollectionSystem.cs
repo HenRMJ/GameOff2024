@@ -14,6 +14,8 @@ partial struct CollectionSystem : ISystem
     [BurstCompile]
     public void OnCreate(ref SystemState state)
     {
+        state.RequireForUpdate<Kitchen>();
+        state.RequireForUpdate<Foundry>();
         state.RequireForUpdate<PhysicsWorldSingleton>();
         state.RequireForUpdate<EndSimulationEntityCommandBufferSystem.Singleton>();
         _collisionFilter = new CollisionFilter
@@ -33,8 +35,8 @@ partial struct CollectionSystem : ISystem
         NativeList<DistanceHit> distanceHits = new NativeList<DistanceHit>(Allocator.Temp);
 
         
-        RefRW<Foundry> foundry = SystemAPI.GetSingletonRW<Foundry>();
-        RefRW<Kitchen> kitchen = SystemAPI.GetSingletonRW<Kitchen>();
+        Foundry foundry = SystemAPI.GetSingleton<Foundry>();
+        Kitchen kitchen = SystemAPI.GetSingleton<Kitchen>();
 
         PhysicsWorldSingleton physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
         CollisionWorld collisionWorld = physicsWorldSingleton.CollisionWorld;
@@ -95,13 +97,13 @@ partial struct CollectionSystem : ISystem
             switch (cultResource.ValueRO.Resource)
             {
                 case CultResources.Wood:
-                    foundry.ValueRW.Wood += resourceContainer.ValueRO.MarkedForBoost ? 2 : 1;
+                    foundry.Wood += resourceContainer.ValueRO.MarkedForBoost ? 2 : 1;
                     break;
                 case CultResources.Rock:
-                    foundry.ValueRW.Stone += resourceContainer.ValueRO.MarkedForBoost ? 2 : 1;
+                    foundry.Stone += resourceContainer.ValueRO.MarkedForBoost ? 2 : 1;
                     break;
                 case CultResources.Meat:
-                    kitchen.ValueRW.Meat += resourceContainer.ValueRO.MarkedForBoost ? 2 : 1;
+                    kitchen.Meat += resourceContainer.ValueRO.MarkedForBoost ? 2 : 1;
 
                     if (SystemAPI.Exists(productivity.ValueRO.ContributationEntity))
                     {
@@ -109,13 +111,16 @@ partial struct CollectionSystem : ISystem
                     }
                     break;
                 case CultResources.Vegetables:
-                    kitchen.ValueRW.Vegetables += resourceContainer.ValueRO.MarkedForBoost ? 2 : 1;
+                    kitchen.Vegetables += resourceContainer.ValueRO.MarkedForBoost ? 2 : 1;
                     break;
                 case CultResources.Water:
-                    kitchen.ValueRW.Water += resourceContainer.ValueRO.MarkedForBoost ? 2 : 1;
+                    kitchen.Water += resourceContainer.ValueRO.MarkedForBoost ? 2 : 1;
                     break;
             }
 
+            SystemAPI.SetSingleton(kitchen);
+            SystemAPI.SetSingleton(foundry);
+            
             resourceContainer.ValueRW.MarkedForBoost = false;
             
             if (resourceContainer.ValueRO.AvailableResources <= 0)
@@ -131,11 +136,5 @@ partial struct CollectionSystem : ISystem
                 }
             }
         } 
-    }
-
-    [BurstCompile]
-    public void OnDestroy(ref SystemState state)
-    {
-        
     }
 }

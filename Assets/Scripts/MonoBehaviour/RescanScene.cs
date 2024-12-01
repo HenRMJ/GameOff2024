@@ -10,7 +10,7 @@ using Unity.Transforms;
 
 public class RescanScene : MonoBehaviour
 {
-    private static Dictionary<GameObject, bool> _existingGameObjects = new();
+    /*private static Dictionary<GameObject, bool> _existingGameObjects = new();
     private static GameObject parentObject;
 
     private void Start()
@@ -21,6 +21,11 @@ public class RescanScene : MonoBehaviour
 
     public static void Rescan()
     {
+        if (!AstarPath.active.graphs[0].isScanned)
+        {
+            AstarPath.active.Scan();
+        }
+        
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
         EntityQuery entityQuery = entityManager.CreateEntityQuery(typeof(LocalTransform), typeof(PhysicsCollider));
 
@@ -102,5 +107,5 @@ public class RescanScene : MonoBehaviour
         {
             _existingGameObjects[key] = false;
         }
-    }
+    }*/
 }

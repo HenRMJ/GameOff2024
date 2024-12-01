@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 9150252800489725491}
   - component: {fileID: 2346348042883646601}
   - component: {fileID: 3005252707751816117}
-  - component: {fileID: 8686247449725141036}
+  - component: {fileID: 6836956444647438023}
   m_Layer: 6
   m_Name: FarmerCultist
   m_TagString: Untagged
@@ -105,9 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96e0bc8c2da0c28459262e781a233fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meatRequirment: 1
-  _waterRequirement: 3
-  _vegetableRequirement: 3
+  _meatRequirment: 2
+  _waterRequirement: 2
+  _vegetableRequirement: 2
   _maxTime: 2
 --- !u!114 &4361573014552058790
 MonoBehaviour:
@@ -372,7 +372,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &8686247449725141036
+--- !u!114 &6836956444647438023
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,31 +381,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 613636480395076373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0452fccc2db44e04c8e3fd8255536dc2, type: 3}
+  m_Script: {fileID: 11500000, guid: 00fe6fc1ebf8ff240ad5b12ad70ce1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AgentTypeId: 0
+  AreaMask: -1
+  AutoRepath: 1
+  m_Grounded: 1
+  m_OverrideAreaCosts: 0
   m_LinkTraversalMode: 0
-  m_Path:
-    AutoRepath:
-      mode: 2
-      period: 2
-  m_ManagedState:
-    rvoSettings:
-      agentTimeHorizon: 1
-      obstacleTimeHorizon: 0.5
-      maxNeighbours: 10
-      layer: 1
-      collidesWith: -1
-      priority: 0.5
-      debug: 0
-      locked: 0
-    pathfindingSettings:
-      graphMask:
-        value: -1
-      tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-      traversableTags: -1
-    enableLocalAvoidance: 0
-    enableGravity: 1
+  MappingExtent:
+    x: 10
+    y: 10
+    z: 10
 --- !u!1 &4773926478870512084
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
-using UnityEngine;
+using Random = Unity.Mathematics.Random;
 
 partial struct ResourceSpawnerSystem : ISystem
 {
@@ -30,8 +30,15 @@ partial struct ResourceSpawnerSystem : ISystem
         NativeList<DistanceHit> distanceHits = new NativeList<DistanceHit>(Allocator.Temp);
         CollisionWorld collisionWorld = physicsWorld.CollisionWorld;
         
-        foreach (RefRW<ResourceSpawner> spawner in SystemAPI.Query<RefRW<ResourceSpawner>>())
+        foreach ((RefRW<ResourceSpawner> spawner, Entity entity) in SystemAPI.Query<RefRW<ResourceSpawner>>().WithEntityAccess())
         {
+            if (!spawner.ValueRO.Initialized)
+            {
+                spawner.ValueRW.Initialized = true;
+                spawner.ValueRW.Random = new Random((uint)entity.Index);
+                spawner.ValueRW.Random.NextFloat();
+            }
+            
             spawner.ValueRW.SpawnTimer += DeltaTime;
             if (spawner.ValueRO.SpawnTimer < spawner.ValueRO.SpawnInterval) continue;
             spawner.ValueRW.SpawnTimer = 0f;
@@ -56,7 +63,6 @@ partial struct ResourceSpawnerSystem : ISystem
                 
                 state.EntityManager.SetComponentData(spawnedEntity, transform);
                 state.EntityManager.SetComponentData(spawnedEntity, container);
-                RescanScene.Rescan();
             }
         }
     }

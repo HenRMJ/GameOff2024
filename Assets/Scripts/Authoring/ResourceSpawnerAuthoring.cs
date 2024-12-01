@@ -19,7 +19,7 @@ public class ResourceSpawnerAuthoring : MonoBehaviour
             AddComponent(entity, new ResourceSpawner
             {
                 ResourceEntity = GetEntity(authoring.resourcePrefab, TransformUsageFlags.None),
-                Random = new Random((uint)System.DateTime.UtcNow.Ticks),
+                Random = new Random((uint)entity.Index),
                 SpawnInterval = authoring.spawnInterval,
                 SpawnAreaMin = authoring.bottomLeftCornerPosition,
                 SpawnAreaMax = authoring.topRightCornerPosition,
@@ -31,6 +31,7 @@ public class ResourceSpawnerAuthoring : MonoBehaviour
 
 public struct ResourceSpawner : IComponentData
 {
+    public bool Initialized;
     public Entity ResourceEntity;
     public float SpawnInterval;
     public float SpawnTimer;

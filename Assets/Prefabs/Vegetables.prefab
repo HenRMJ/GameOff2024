@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 3769289647725578193}
   - component: {fileID: 861805841040206621}
   - component: {fileID: 7001851668535476741}
+  - component: {fileID: 7833552150128619196}
   m_Layer: 7
   m_Name: Vegetables
   m_TagString: Untagged
@@ -173,6 +174,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.9964304, y: 0.6218704, z: 5.0105295}
   m_Center: {x: 0.06708336, y: 0.3109352, z: 0.41039896}
+--- !u!208 &7833552150128619196
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7767044057954957201}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.498215, y: 0.3109352, z: 2.505265}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.06708336, y: 0.3109352, z: 0.410399}
+  m_TimeToStationary: 0.5
 --- !u!1001 &127994884414703751
 PrefabInstance:
   m_ObjectHideFlags: 0

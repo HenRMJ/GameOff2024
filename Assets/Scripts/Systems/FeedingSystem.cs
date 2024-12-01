@@ -20,8 +20,14 @@ partial struct FeedingSystem : ISystem
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
-        Entity kitchenEntity = SystemAPI.GetSingletonEntity<Kitchen>();
+        Kitchen kitchen = SystemAPI.GetSingleton<Kitchen>();
 
+        if (kitchen.GodlyNourishment)
+        {
+            new GodlyNourishment().ScheduleParallel();
+            return;
+        }
+        
         // This should be moved to where the entites are spawned later
         int numberOfMovers = 0;
         foreach (RefRO<SetTarget> target in SystemAPI.Query<RefRO<SetTarget>>())
@@ -48,7 +54,6 @@ partial struct FeedingSystem : ISystem
         JobHandle gatherRequirementsHandle = gatherRequirements.ScheduleParallel(state.Dependency);
         gatherRequirementsHandle.Complete();
 
-        Kitchen kitchen = SystemAPI.GetComponent<Kitchen>(kitchenEntity);
 
         int totalMeat = 0;
         int totalWater = 0;
@@ -130,5 +135,14 @@ public partial struct SatiateJob : IJobEntity
         }
 
         nourishmentReceiver.Contributed = false;
+    }
+}
+
+[BurstCompile]
+public partial struct GodlyNourishment : IJobEntity
+{
+    public void Execute(ref NourishmentReceiver receiver)
+    {
+        receiver.Satiated = true;
     }
 }

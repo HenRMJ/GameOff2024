@@ -24,6 +24,7 @@ public class KitchenAuthoring : MonoBehaviour
 
 public struct Kitchen : IComponentData
 {
+    public bool GodlyNourishment;
     public int Water;
     public int Meat;
     public int Vegetables;

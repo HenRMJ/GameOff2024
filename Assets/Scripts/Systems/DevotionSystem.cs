@@ -2,7 +2,6 @@ using Rukhanka;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
 
@@ -55,11 +54,13 @@ partial struct DevotionSystem : ISystem
                     SystemAPI.HasComponent<Cultist>(hit.Entity))
                 {
                     Cultist cultist = SystemAPI.GetComponent<Cultist>(hit.Entity);
+                    CultistType type = SystemAPI.GetComponent<CultistType>(hit.Entity);
+                    
                     cultist.Devotion++;
                     AnimatorParametersAspect animator = SystemAPI.GetAspect<AnimatorParametersAspect>(hit.Entity);
                     animator.SetTrigger(devoteTrigger);
                     
-                    avatar.Devotion += cultist.Level;
+                    avatar.Devotion += type.Type == CultistTypes.Follower ? cultist.Level * 2 : cultist.Level;
                     SystemAPI.SetComponent(hit.Entity, cultist);
                 }
             }

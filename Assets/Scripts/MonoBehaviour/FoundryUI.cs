@@ -17,9 +17,10 @@ public class FoundryUI : MonoBehaviour
     private void Update()
     {
         EntityQuery entityQuery = _entityManager.CreateEntityQuery(typeof(Foundry));
-        Foundry foundry = entityQuery.GetSingleton<Foundry>();
-
-        woodText.text = foundry.Wood.ToString();
-        stoneText.text = foundry.Stone.ToString();
+        if (entityQuery.TryGetSingleton<Foundry>(out Foundry foundry))
+        {
+            woodText.text = foundry.Wood.ToString();
+            stoneText.text = foundry.Stone.ToString();
+        }
     }
 }

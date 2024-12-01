@@ -129,11 +129,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6689103024352034763, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: _meatRequirment
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6689103024352034763, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: _waterRequirement
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689103024352034763, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
+      propertyPath: _vegetableRequirement
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7918474772965436720, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: m_Avatar
