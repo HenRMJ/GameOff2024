@@ -53,15 +53,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 0f5032735e9c9a4429fa0f3494b61a67, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0d54638812c699446b94f2261e3f4465, type: 2}
     - target: {fileID: 13700002, guid: 0f5032735e9c9a4429fa0f3494b61a67, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0d54638812c699446b94f2261e3f4465, type: 2}
     - target: {fileID: 13700004, guid: 0f5032735e9c9a4429fa0f3494b61a67, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0d54638812c699446b94f2261e3f4465, type: 2}
     m_RemovedComponents:
@@ -90,6 +90,10 @@ PrefabInstance:
     - target: {fileID: 3895901777651342285, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: type
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361573014552058790, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
+      propertyPath: timerMax
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5096016160084489558, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -146,6 +150,10 @@ PrefabInstance:
     - target: {fileID: 6689103024352034763, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: _vegetableRequirement
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617445751043626968, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
+      propertyPath: TimerToAge
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7918474772965436720, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: m_Avatar

@@ -53,11 +53,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 85762995a7b0b9c40be20e8511f88723, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e8418b87737cbd5498495cc484f56939, type: 2}
     - target: {fileID: 13700002, guid: 85762995a7b0b9c40be20e8511f88723, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: e8418b87737cbd5498495cc484f56939, type: 2}
     m_RemovedComponents:
@@ -86,6 +86,10 @@ PrefabInstance:
     - target: {fileID: 3895901777651342285, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361573014552058790, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
+      propertyPath: timerMax
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5096016160084489558, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: m_LocalPosition.x

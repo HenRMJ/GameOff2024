@@ -14,7 +14,7 @@ public class RescanScene : MonoBehaviour
     private static Dictionary<GameObject, bool> _existingGameObjects = new();
     private static GameObject parentObject;
 
-    private void Start()
+    private void Awake()
     {
         parentObject = gameObject;
     }

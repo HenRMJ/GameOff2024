@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 9
+  serializedVersion: 10
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -42,8 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
-  m_GIWorkflowMode: 1
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -66,9 +66,6 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_FinalGather: 0
-    m_FinalGatherFiltering: 1
-    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -133,6 +130,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -251,7 +256,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031131910, guid: abc00000000013040831882654769493, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -272,6 +278,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -390,7 +404,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031134095, guid: abc00000000012347412765425709390, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -451,6 +466,14 @@ PrefabInstance:
     - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
       propertyPath: m_Name
       value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -529,7 +552,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031133456, guid: abc00000000005955758453743907149, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -591,7 +615,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031131910, guid: abc00000000013040831882654769493, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -701,6 +726,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vegetables
       objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -782,6 +815,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meat
       objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -818,6 +859,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -896,6 +945,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.82
@@ -973,6 +1030,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone
       objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.16
@@ -1049,6 +1114,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1170,6 +1243,14 @@ PrefabInstance:
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
       value: Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1334,6 +1415,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone
       objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.31
@@ -1451,6 +1540,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1532,7 +1629,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031132016, guid: abc00000000003347498418196589236, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1553,6 +1651,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1644,7 +1750,7 @@ Transform:
   m_GameObject: {fileID: 292343121}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.451, y: 0, z: -0.42}
+  m_LocalPosition: {x: -0.549, y: 0, z: -4.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1710,7 +1816,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031134095, guid: abc00000000012347412765425709390, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1772,6 +1879,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1808,6 +1923,10 @@ PrefabInstance:
     - target: {fileID: 613636480395076373, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: m_Name
       value: Cultist (78)
+      objectReference: {fileID: 0}
+    - target: {fileID: 613636480395076373, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5096016160084489558, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1921,6 +2040,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meat
       objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1957,6 +2084,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2075,7 +2210,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7494144905557010963, guid: abc00000000006669132706075526961, type: 3}
+    - {fileID: 9176909720036542409, guid: abc00000000006669132706075526961, type: 3}
+    - {fileID: 5385566646091321717, guid: abc00000000006669132706075526961, type: 3}
+    - {fileID: 4829847705412941545, guid: abc00000000006669132706075526961, type: 3}
+    - {fileID: 7780506956865935406, guid: abc00000000006669132706075526961, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2137,7 +2277,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031131522, guid: abc00000000003895361275492066983, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2158,6 +2299,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2280,6 +2429,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meat
       objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2357,6 +2514,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vegetables
       objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2393,6 +2558,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2470,6 +2643,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2592,6 +2773,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meat
       objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2668,6 +2857,14 @@ PrefabInstance:
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
       value: Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2750,7 +2947,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031134095, guid: abc00000000012347412765425709390, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2771,6 +2969,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2889,7 +3095,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031131235, guid: abc00000000002421042794932448159, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2910,6 +3117,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2987,6 +3202,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
       propertyPath: m_Name
       value: Stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3105,7 +3328,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031134095, guid: abc00000000012347412765425709390, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3126,6 +3350,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
       propertyPath: m_Name
       value: Stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3244,7 +3476,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031133456, guid: abc00000000005955758453743907149, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3305,6 +3538,14 @@ PrefabInstance:
     - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
       propertyPath: m_Name
       value: Vegetables
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3383,7 +3624,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031133456, guid: abc00000000005955758453743907149, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3404,6 +3646,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3610,7 +3860,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031133456, guid: abc00000000005955758453743907149, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -3671,6 +3922,14 @@ PrefabInstance:
     - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
       propertyPath: m_Name
       value: Vegetables
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3753,6 +4012,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meat
       objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3789,6 +4056,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3866,6 +4141,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
       propertyPath: m_Name
       value: Stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3984,7 +4267,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031131910, guid: abc00000000013040831882654769493, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4045,6 +4329,14 @@ PrefabInstance:
     - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
       propertyPath: m_Name
       value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4129,6 +4421,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4313,7 +4608,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031131910, guid: abc00000000013040831882654769493, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4378,6 +4674,14 @@ PrefabInstance:
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
       value: Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4523,7 +4827,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031134095, guid: abc00000000012347412765425709390, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4584,6 +4889,14 @@ PrefabInstance:
     - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
       propertyPath: m_Name
       value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4666,6 +4979,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meat
       objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4742,6 +5063,14 @@ PrefabInstance:
     - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
       propertyPath: m_Name
       value: Vegetables
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4883,6 +5212,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4959,6 +5296,14 @@ PrefabInstance:
     - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
       propertyPath: m_Name
       value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5040,6 +5385,14 @@ PrefabInstance:
     - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
       propertyPath: m_Name
       value: Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5253,6 +5606,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5329,6 +5690,14 @@ PrefabInstance:
     - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
       propertyPath: m_Name
       value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804043367456659422, guid: 824dee142c3e31748ae7b06d90ccf3fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5411,6 +5780,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meat
       objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789135898204414823, guid: c97fb0324a252a24ea2d905aebc51acb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5485,7 +5862,7 @@ PrefabInstance:
       value: 179.998
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: b874f6d7f722b6d4483c7a8189ae994a, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 14b222c41dd79ff498fad68cc32caeb2, type: 2}
     - target: {fileID: 919132149155446097, guid: b874f6d7f722b6d4483c7a8189ae994a, type: 3}
@@ -5549,6 +5926,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vegetables
       objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5585,6 +5970,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5703,7 +6096,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031131522, guid: abc00000000003895361275492066983, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -5724,6 +6118,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5865,6 +6267,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.5
@@ -5941,6 +6351,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6035,6 +6453,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
       propertyPath: m_Name
       value: Stone
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6200,6 +6626,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone
       objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: 6c9da38c60eb7ec48af56c36de942104, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.73
@@ -6317,7 +6751,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031131522, guid: abc00000000003895361275492066983, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6379,7 +6814,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1031131522, guid: abc00000000003895361275492066983, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6441,6 +6877,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vegetables
       objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767044057954957201, guid: 714b9980ae109734fb55d5dff14fcd42, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6477,6 +6921,14 @@ PrefabInstance:
     - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_Name
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6555,6 +7007,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330762305726322325, guid: aa9550f59c4144740b05926c58191a94, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8824170309676347552, guid: aa9550f59c4144740b05926c58191a94, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.2
@@ -6631,6 +7091,10 @@ PrefabInstance:
     - target: {fileID: 613636480395076373, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: m_Name
       value: Cultist
+      objectReference: {fileID: 0}
+    - target: {fileID: 613636480395076373, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3983830288904128189, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
       propertyPath: _health

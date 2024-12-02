@@ -166,10 +166,11 @@ public class SelectionManager : MonoBehaviour
                 }
             }
 
-            entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected, SetTarget, Productivity, CultResource>().Build(entityManager);
+            entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected, SetTarget, Productivity, CultResource, ForcedWork>().Build(entityManager);
 
             NativeArray<SetTarget> setTargets = entityQuery.ToComponentDataArray<SetTarget>(Allocator.Temp);
             NativeArray<CultResource> cultResources = entityQuery.ToComponentDataArray<CultResource>(Allocator.Temp);
+            NativeArray<ForcedWork> forcedWorks = entityQuery.ToComponentDataArray<ForcedWork>(Allocator.Temp);
             NativeArray<Productivity> cultProductivities =
                 entityQuery.ToComponentDataArray<Productivity>(Allocator.Temp);
             NativeArray<float3> movePositionArray = GenerateGridPositionArray(mouseWorldPosition, setTargets.Length);
@@ -179,6 +180,7 @@ public class SelectionManager : MonoBehaviour
                 SetTarget target = setTargets[i];
                 CultResource entityCultResource = cultResources[i];
                 Productivity entityProductivity = cultProductivities[i];
+                ForcedWork forcedWork = forcedWorks[i];
                 
                 if (selectedResource)
                 {
@@ -191,14 +193,18 @@ public class SelectionManager : MonoBehaviour
                     target.TargetPosition = movePositionArray[i];
                     entityCultResource.Resource = CultResources.None;
                     entityProductivity.ContributationEntity = Entity.Null;
+                    forcedWork.Forced = false;
+                    forcedWork.ResourceToSearchFor = CultResources.None;
                 }
                 
                 setTargets[i] = target;
                 cultResources[i] = entityCultResource;
                 cultProductivities[i] = entityProductivity;
+                forcedWorks[i] = forcedWork;
             }
             
             entityQuery.CopyFromComponentDataArray(cultProductivities);
+            entityQuery.CopyFromComponentDataArray(forcedWorks);
             entityQuery.CopyFromComponentDataArray(setTargets);
             entityQuery.CopyFromComponentDataArray(cultResources);
         }

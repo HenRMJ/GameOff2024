@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 2346348042883646601}
   - component: {fileID: 3005252707751816117}
   - component: {fileID: 6836956444647438023}
+  - component: {fileID: 7923934382210440818}
   m_Layer: 6
   m_Name: FarmerCultist
   m_TagString: Untagged
@@ -92,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a036b9da49bce8d46ad4b66a6729cdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimerToAge: 600
+  TimerToAge: 300
 --- !u!114 &6689103024352034763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73dc4e38a50382e49aa12944e32117f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerMax: 5
-  startingHunger: 50
+  timerMax: 60
+  startingHunger: 100
   maxHunger: 100
 --- !u!114 &6669653436606422068
 MonoBehaviour:
@@ -265,7 +266,7 @@ MonoBehaviour:
   type: 1
 --- !u!95 &7918474772965436720
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -279,6 +280,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -394,6 +396,18 @@ MonoBehaviour:
     x: 10
     y: 10
     z: 10
+--- !u!114 &7923934382210440818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613636480395076373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13026b83afac5d2429b2787c7aa9d8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4773926478870512084
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +467,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -560,15 +577,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 8a7f9b558a11967419f1b861d9b63d68, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2555967497703de469164c89431e04da, type: 2}
     - target: {fileID: 13700002, guid: 8a7f9b558a11967419f1b861d9b63d68, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2555967497703de469164c89431e04da, type: 2}
     - target: {fileID: 13700004, guid: 8a7f9b558a11967419f1b861d9b63d68, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2555967497703de469164c89431e04da, type: 2}
     m_RemovedComponents:

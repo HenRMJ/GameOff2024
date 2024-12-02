@@ -53,8 +53,7 @@ partial struct FeedingSystem : ISystem
 
         JobHandle gatherRequirementsHandle = gatherRequirements.ScheduleParallel(state.Dependency);
         gatherRequirementsHandle.Complete();
-
-
+        
         int totalMeat = 0;
         int totalWater = 0;
         int totalVegetables = 0;
