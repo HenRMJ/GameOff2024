@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6629830546269326349}
   - component: {fileID: 8110484650933463644}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MonumentOfFertility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7295349505171585750}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.90688, y: 0, z: -2.1976647}
+  m_LocalPosition: {x: 50, y: 0, z: -2.1976647}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

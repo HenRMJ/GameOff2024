@@ -20,9 +20,9 @@ RenderSettings:
   m_FogDensity: 0.003
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.6152934, g: 0.94439566, b: 1.0067163, a: 1.5}
-  m_AmbientEquatorColor: {r: 0.70047164, g: 0.43463033, b: 0.5469812, a: 1.3499999}
-  m_AmbientGroundColor: {r: 0.35023582, g: 0.21731517, b: 0.2734906, a: 1.3499999}
+  m_AmbientSkyColor: {r: 0.6152934, g: 0.9443956, b: 1.0067163, a: 1.5}
+  m_AmbientEquatorColor: {r: 0.70047164, g: 0.43463033, b: 0.54698116, a: 1.3499999}
+  m_AmbientGroundColor: {r: 0.35023582, g: 0.21731517, b: 0.27349058, a: 1.3499999}
   m_AmbientIntensity: 1
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
@@ -675,7 +675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65872706}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.36026695, z: -0, w: 0.9328493}
+  m_LocalRotation: {x: -0, y: 0.3942548, z: -0, w: 0.9190012}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8766,7 +8766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4d76f733087744991913c9d19d5274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LensFlareData: {fileID: 11400000, guid: bd7eaf3bd49c39f4cb77bd809459aa72, type: 2}
+  m_LensFlareData: {fileID: 0}
   version: 0
   intensity: 0
   maxAttenuationDistance: 100
@@ -24370,7 +24370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4d76f733087744991913c9d19d5274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LensFlareData: {fileID: 11400000, guid: bd7eaf3bd49c39f4cb77bd809459aa72, type: 2}
+  m_LensFlareData: {fileID: 0}
   version: 0
   intensity: 0
   maxAttenuationDistance: 100
@@ -24482,7 +24482,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933400944}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 0.009296246, g: 0.012885212, b: 0.019907111, a: 0}
@@ -24966,7 +24966,7 @@ MonoBehaviour:
   cachedSystem: {fileID: 1675389030}
   biomes: []
   weight: 1
-  cumulus: 0
+  cumulus: 0.2
   cirrus: 0
   altocumulus: 0
   cirrostratus: 0
@@ -31172,8 +31172,8 @@ MonoBehaviour:
   highAltitudeCloudColor: {r: 1.3044192, g: 1.749963, b: 1.886495, a: 1}
   sunlightColor: {r: 0.3891377, g: 0.22497022, b: 0.18544842, a: 1}
   starColor: {r: 7.0107613, g: 7.0107613, b: 7.0107613, a: 1}
-  ambientLightHorizonColor: {r: 0.5188679, g: 0.3219484, b: 0.40517125, a: 1}
-  ambientLightZenithColor: {r: 0.4101956, g: 0.6295971, b: 0.6711442, a: 1}
+  ambientLightHorizonColor: {r: 0.5188679, g: 0.3219484, b: 0.40517122, a: 1}
+  ambientLightZenithColor: {r: 0.4101956, g: 0.62959707, b: 0.6711442, a: 1}
   ambientLightMultiplier: 1.5
   galaxyIntensity: 0
   fogColor1: {r: 0, g: 0, b: 0, a: 0.007843138}
@@ -31356,7 +31356,7 @@ Transform:
   m_GameObject: {fileID: 1675389029}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.03952, y: 8.966321, z: -26.450962}
+  m_LocalPosition: {x: 86.2524, y: 51.839417, z: -78.90999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32818,7 +32818,7 @@ MonoBehaviour:
   _buildingLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  _clearanceRange: 0
+  _clearanceRange: 3
 --- !u!23 &1845443060 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1031133095, guid: abc00000000015463029978669903086, type: 3}
@@ -35533,8 +35533,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   woodText: {fileID: 1821234421}
   stoneText: {fileID: 1572395182}
-  woodCost: 50
-  stoneCost: 150
+  woodCost: 1
+  stoneCost: 1
   woodCostText: {fileID: 1493751767}
   stoneCostText: {fileID: 966933000}
   purchaseButton: {fileID: 216117613}

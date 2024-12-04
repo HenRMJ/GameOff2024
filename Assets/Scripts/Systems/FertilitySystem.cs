@@ -46,19 +46,19 @@ partial struct FertilitySystem : ISystem
                     arousal.ValueRW.ArousalValue++;
                 }
             }
-
-            foreach (var (cleanupNameBlob, entity) in SystemAPI.Query <RefRW<CleanupNameBlob>>().WithEntityAccess())
+        }
+        
+        foreach (var (cleanupNameBlob, entity) in SystemAPI.Query <RefRW<CleanupNameBlob>>().WithEntityAccess())
+        {
+            if (state.EntityManager.HasComponent<Disabled>(entity))
             {
-                if (state.EntityManager.HasComponent<Disabled>(entity))
+                if (cleanupNameBlob.ValueRO.NamesBlob.IsCreated)
                 {
-                    if (cleanupNameBlob.ValueRO.NamesBlob.IsCreated)
-                    {
-                        cleanupNameBlob.ValueRW.NamesBlob.Dispose();
-                    }
+                    cleanupNameBlob.ValueRW.NamesBlob.Dispose();
                 }
-
-                state.EntityManager.RemoveComponent<CleanupNameBlob>(entity);
             }
+
+            state.EntityManager.RemoveComponent<CleanupNameBlob>(entity);
         }
     }
 }

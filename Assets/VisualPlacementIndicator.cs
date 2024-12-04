@@ -11,11 +11,6 @@ public class VisualPlacementIndicator : MonoBehaviour
     private bool _previousCollided;
     private bool _collided;
 
-    private void Start()
-    {
-        Debug.Log("Something");
-    }
-
     private void FixedUpdate()
     {
         int size = Physics.OverlapSphereNonAlloc(transform.position, _clearanceRange, new Collider[5], _buildingLayerMask);

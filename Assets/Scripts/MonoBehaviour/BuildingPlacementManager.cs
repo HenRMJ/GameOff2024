@@ -1,4 +1,6 @@
+using System.Collections;
 using Unity.Entities;
+using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
 
@@ -49,10 +51,20 @@ public class BuildingPlacementManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+            
             EntityQuery entityQuery = _entityManager.CreateEntityQuery(typeof(EntitiesReferences));
             EntitiesReferences entitiesReferences = entityQuery.GetSingleton<EntitiesReferences>();
             Entity spawnedEntity = _entityManager.Instantiate(entitiesReferences.BrothelEntity);
-            _entityManager.SetComponentData(spawnedEntity, LocalTransform.FromPosition(mouseWorldPosition));
+            
+            Debug.Log(mouseWorldPosition);
+            
+            _entityManager.SetComponentData(spawnedEntity, new LocalTransform
+            {
+                Position = mouseWorldPosition,
+                Rotation =  quaternion.identity,
+                Scale = 1f
+            });
 
             entityQuery = _entityManager.CreateEntityQuery(typeof(Foundry));
             Foundry foundry = entityQuery.GetSingleton<Foundry>();
@@ -60,10 +72,22 @@ public class BuildingPlacementManager : MonoBehaviour
             foundry.Stone -= _amountOfStoneToDeduct;
             entityQuery.SetSingleton(foundry);
             
+            Debug.Log(_entityManager.GetComponentData<LocalTransform>(spawnedEntity).Position);
+            StartCoroutine(CheckEntityLocation(spawnedEntity));
             ResetPlacement();
         }
     }
 
+    private IEnumerator CheckEntityLocation(Entity entityToCheck)
+    {
+        yield return new WaitForSeconds(1f);
+
+        _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        
+        Debug.Log(_entityManager.GetComponentData<LocalTransform>(entityToCheck).Position);
+        Debug.Log(entityToCheck);
+    }
+    
     public void ReadyPlacement(int woodCost, int stoneCost)
     {
         _readyPlacement = true;

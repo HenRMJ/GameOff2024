@@ -14,9 +14,10 @@ public class RescanScene : MonoBehaviour
     private static Dictionary<GameObject, bool> _existingGameObjects = new();
     private static GameObject parentObject;
 
-    private void Awake()
+    private void Start()
     {
         parentObject = gameObject;
+        Rescan();
     }
 
     public static void Rescan()
@@ -52,6 +53,7 @@ public class RescanScene : MonoBehaviour
                     boxCollider.size = boxGeometry.Size;
                     boxCollider.center = boxGeometry.Center;
                     NavMeshObstacle cut = tempCollider.AddComponent<NavMeshObstacle>();
+                    
                     cut.center = boxCollider.center;
                     cut.size = boxCollider.size;
                     cut.height = 10f;
@@ -60,6 +62,7 @@ public class RescanScene : MonoBehaviour
             }
             
             tempCollider.transform.position = transforms[ColliderIndex].Position;
+            tempCollider.transform.rotation = transforms[ColliderIndex].Rotation;
             ColliderIndex++;
             _existingGameObjects.Add(tempCollider, true);
         }
