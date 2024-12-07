@@ -10,7 +10,6 @@ public class AvatarUI : MonoBehaviour
     [Header("Nourishment Values")]
     [SerializeField] private Button nourishmentButton;
     [SerializeField] private int nourishmentCost;
-    [SerializeField] private float nourishmentTime;
     
     private EntityManager _entityManager;
     private bool _godlyNourishment;

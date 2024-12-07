@@ -675,7 +675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65872706}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7018869, z: -0, w: 0.71228844}
+  m_LocalRotation: {x: -0, y: 0.95785856, z: -0, w: -0.28724042}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -25573,7 +25573,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 759.1672, y: 759.1672, z: 759.1672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1811994224}
@@ -31215,7 +31215,7 @@ Transform:
   m_GameObject: {fileID: 1675389029}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 409.67297, y: 448.84003, z: -762.7696}
+  m_LocalPosition: {x: 0.86, y: 19.43, z: -21.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -35718,8 +35718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   devotionText: {fileID: 1638298372}
   nourishmentButton: {fileID: 202102338}
-  nourishmentCost: 2
-  nourishmentTime: 30
+  nourishmentCost: 5000
 --- !u!1 &2124716378
 GameObject:
   m_ObjectHideFlags: 0

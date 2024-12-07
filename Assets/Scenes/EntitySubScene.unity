@@ -5538,7 +5538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b27437846e8ec4da1c5d470d27050e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  godlyNourishmentDuration: 30
+  godlyNourishmentDuration: 120
   _water: 500
   _meat: 500
   _vegetables: 500
