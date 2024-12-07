@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7295349505171585750
+--- !u!1 &2406278043200321990
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,52 +8,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6629830546269326349}
-  - component: {fileID: 8110484650933463644}
+  - component: {fileID: 3997679691190975575}
+  - component: {fileID: 1788240523974527325}
   m_Layer: 7
   m_Name: MonumentOfFertility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &6629830546269326349
+--- !u!4 &3997679691190975575
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7295349505171585750}
+  m_GameObject: {fileID: 2406278043200321990}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50, y: 0, z: -2.1976647}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 351695624880679336}
+  - {fileID: 9217820379806746428}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8110484650933463644
+--- !u!114 &1788240523974527325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7295349505171585750}
+  m_GameObject: {fileID: 2406278043200321990}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fd2d8e81a6f2434fb8ea44bf4d04c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arouseInterval: 5
+  arouseInterval: 0.5
   range: 8
---- !u!1001 &351695624164851254
+--- !u!1001 &9217820379857883298
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 6629830546269326349}
+    m_TransformParent: {fileID: 3997679691190975575}
     m_Modifications:
     - target: {fileID: 1031133085, guid: abc00000000015463029978669903086, type: 3}
       propertyPath: m_Name
@@ -103,13 +103,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    - target: {fileID: 1031133087, guid: abc00000000015463029978669903086, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031133089, guid: abc00000000015463029978669903086, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1031133087, guid: abc00000000015463029978669903086, type: 3}
+    - {fileID: 1031133088, guid: abc00000000015463029978669903086, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 1031133105, guid: abc00000000015463029978669903086, type: 3}
+    - {fileID: 1031133101, guid: abc00000000015463029978669903086, type: 3}
+    - {fileID: 1031133097, guid: abc00000000015463029978669903086, type: 3}
+    - {fileID: 1031133093, guid: abc00000000015463029978669903086, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abc00000000015463029978669903086, type: 3}
---- !u!4 &351695624880679336 stripped
+--- !u!4 &9217820379806746428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1031133086, guid: abc00000000015463029978669903086, type: 3}
-  m_PrefabInstance: {fileID: 351695624164851254}
+  m_PrefabInstance: {fileID: 9217820379857883298}
   m_PrefabAsset: {fileID: 0}

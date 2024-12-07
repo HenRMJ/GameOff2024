@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class KitchenAuthoring : MonoBehaviour
 {
+    [SerializeField] private float godlyNourishmentDuration;
+    
     [SerializeField] private int _water;
     [SerializeField] private int _meat;
     [SerializeField] private int _vegetables;
@@ -14,6 +16,7 @@ public class KitchenAuthoring : MonoBehaviour
             Entity entity = GetEntity(TransformUsageFlags.Dynamic);
             AddComponent(entity, new Kitchen
             {
+                GodlyNourishmentDuration = authoring.godlyNourishmentDuration,
                 Water = authoring._water,
                 Meat = authoring._meat,
                 Vegetables = authoring._vegetables
@@ -24,6 +27,8 @@ public class KitchenAuthoring : MonoBehaviour
 
 public struct Kitchen : IComponentData
 {
+    public float GodlyNourishmentDuration;
+    public float GodlyNourishmentTimer;
     public bool GodlyNourishment;
     public int Water;
     public int Meat;

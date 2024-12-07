@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using Unity.Entities;
 using UnityEngine;
@@ -14,11 +13,24 @@ public class AvatarUI : MonoBehaviour
     [SerializeField] private float nourishmentTime;
     
     private EntityManager _entityManager;
-    private bool godlyNourishment;
+    private bool _godlyNourishment;
+    private bool _initialized;
+    private float _timer;
+    
+    private void OnEnable()
+    {
+        if (!_initialized)
+        {
+            _initialized = true;
+            _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        }
+        CheckGodlyNourishment();
+    }
     
     private void Start()
     {
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        nourishmentButton.GetComponentInChildren<TextMeshProUGUI>().text = $"{nourishmentCost.ToString()} XP";
     }
 
     private void Update()
@@ -28,32 +40,27 @@ public class AvatarUI : MonoBehaviour
 
         devotionText.text = avatar.Devotion.ToString();
 
-        nourishmentButton.interactable = avatar.Devotion >= nourishmentCost && !godlyNourishment;
-    }
-
-    public void GodlyNourishment()
-    {
-        StartCoroutine(NourishFollowers());
-    }
-
-    private IEnumerator NourishFollowers()
-    {
-        float timer = 0;
-       
-        EnableNourishment();
-        
-        while (timer < nourishmentTime)
+        if (_godlyNourishment)
         {
-            timer += Time.deltaTime;
-            yield return null;
+            _timer += Time.deltaTime;
+            if (_timer > 1f)
+            {
+                _timer = 0f;
+                CheckGodlyNourishment();
+            }
         }
         
-        DisableNourishment();
-    }
+        bool canInteractWith = avatar.Devotion >= nourishmentCost && !_godlyNourishment;
 
-    private void EnableNourishment()
+        if (canInteractWith != nourishmentButton.IsInteractable())
+        {
+            nourishmentButton.interactable = canInteractWith;
+        }
+    }
+    
+    public void EnableNourishment()
     {
-        godlyNourishment = true;
+        _godlyNourishment = true;
         RefRW<Avatar> avatar = _entityManager.CreateEntityQuery(typeof(Avatar)).GetSingletonRW<Avatar>();
         RefRW<Kitchen> kitchen = _entityManager.CreateEntityQuery(typeof(Kitchen)).GetSingletonRW<Kitchen>();
 
@@ -61,11 +68,13 @@ public class AvatarUI : MonoBehaviour
         avatar.ValueRW.Devotion -= nourishmentCost;
     }
 
-    private void DisableNourishment()
+    private void CheckGodlyNourishment()
     {
-        RefRW<Kitchen> kitchen = _entityManager.CreateEntityQuery(typeof(Kitchen)).GetSingletonRW<Kitchen>();
+        EntityQuery kitchenQuery = _entityManager.CreateEntityQuery(typeof(Kitchen));
 
-        kitchen.ValueRW.GodlyNourishment = false;
-        godlyNourishment = false;
+        if (kitchenQuery.TryGetSingleton(out Kitchen kitchen))
+        {
+            _godlyNourishment = kitchen.GodlyNourishment;
+        }
     }
 }

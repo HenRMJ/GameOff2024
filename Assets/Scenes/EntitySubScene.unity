@@ -658,7 +658,7 @@ MonoBehaviour:
   farmerCultistPrefab: {fileID: 613636480395076373, guid: 151e2f89d58985a41bc53c3841c9d0ba, type: 3}
   builderCulstitPrefab: {fileID: 6205254320954479477, guid: 9873ff5472ee4fa4498b04c8f932ab7d, type: 3}
   followerCultistPrefab: {fileID: 7942501334142678592, guid: 3e1c2e86f081e414aa3952fa6618c6c0, type: 3}
-  brothelPrefab: {fileID: 7295349505171585750, guid: 32009037767322042883bb79ba0154ea, type: 3}
+  brothelPrefab: {fileID: 2406278043200321990, guid: 32009037767322042883bb79ba0154ea, type: 3}
 --- !u!4 &99697653
 Transform:
   m_ObjectHideFlags: 0
@@ -5538,6 +5538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b27437846e8ec4da1c5d470d27050e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  godlyNourishmentDuration: 30
   _water: 500
   _meat: 500
   _vegetables: 500

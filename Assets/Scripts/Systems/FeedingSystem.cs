@@ -25,7 +25,17 @@ partial struct FeedingSystem : ISystem
         if (kitchen.GodlyNourishment)
         {
             new GodlyNourishment().ScheduleParallel();
-            return;
+
+            kitchen.GodlyNourishmentTimer += SystemAPI.Time.DeltaTime;
+            if (kitchen.GodlyNourishmentTimer <= kitchen.GodlyNourishmentDuration)
+            {
+                SystemAPI.SetSingleton(kitchen);
+                return;
+            }
+
+            kitchen.GodlyNourishmentTimer = 0f;
+            kitchen.GodlyNourishment = false;
+            SystemAPI.SetSingleton(kitchen);
         }
         
         // This should be moved to where the entites are spawned later
